@@ -2231,7 +2231,27 @@
             
             // Enhanced search functionality
             const searchInput = document.getElementById('search-input');
-            
+            const searchStats = document.getElementById('search-stats');
+
+            // Function to collect all searchable text from an element
+            function getAllTextContent(element) {
+                let text = '';
+                
+                // Get text from toc-title and toc-desc
+                const titleEl = element.querySelector('.toc-title');
+                const descEl = element.querySelector('.toc-desc');
+                
+                if (titleEl) text += titleEl.textContent + ' ';
+                if (descEl) text += descEl.textContent + ' ';
+                
+                // Get text from all catalogue-links and showroom-links inside this element
+                element.querySelectorAll('.catalogue-link, .showroom-link').forEach(link => {
+                    text += link.textContent + ' ';
+                });
+                
+                return text.toLowerCase();
+            }
+
             searchInput.addEventListener('input', function() {
                 // Show loading bar during search
                 loadingBar.style.opacity = '1';
@@ -2241,32 +2261,82 @@
                 const allItems = document.querySelectorAll('.toc-item');
                 let foundItems = 0;
                 
+                // Also search in catalogue and showroom links
+                const catalogueLinks = document.querySelectorAll('.catalogue-link');
+                const showroomLinks = document.querySelectorAll('.showroom-link');
+                
+                // Display search stats
+                if (searchStats) {
+                    searchStats.style.display = searchValue ? 'block' : 'none';
+                }
+                
                 setTimeout(() => {
+                    // Reset all highlights and displays
+                    document.querySelectorAll('.toc-title, .toc-desc, .catalogue-link, .showroom-link').forEach(el => {
+                        el.style.backgroundColor = '';
+                        el.style.padding = '';
+                        el.style.borderRadius = '';
+                    });
+                    
+                    // Search through all toc items and their content
                     allItems.forEach(item => {
+                        // Get all searchable text content from this item
+                        const allText = getAllTextContent(item);
                         const titleElement = item.querySelector('.toc-title');
+                        
                         if (!titleElement) return;
                         
                         const title = titleElement.textContent.toLowerCase();
                         const descElement = item.querySelector('.toc-desc');
                         const desc = descElement ? descElement.textContent.toLowerCase() : '';
                         
-                        // Reset highlight styling
-                        titleElement.style.backgroundColor = '';
-                        titleElement.style.padding = '';
-                        titleElement.style.borderRadius = '';
+                        // Direct match in title or description
+                        const directMatch = title.includes(searchValue) || desc.includes(searchValue);
                         
-                        if (searchValue && (title.includes(searchValue) || desc.includes(searchValue))) {
+                        // Match in any catalogue or showroom links within this item
+                        let hasMatchingLink = false;
+                        
+                        // Check catalogue links
+                        item.querySelectorAll('.catalogue-link').forEach(link => {
+                            if (link.textContent.toLowerCase().includes(searchValue)) {
+                                hasMatchingLink = true;
+                                // Highlight the link
+                                link.style.backgroundColor = '#fff3cd';
+                                link.style.borderRadius = '3px';
+                            }
+                        });
+                        
+                        // Check showroom links
+                        item.querySelectorAll('.showroom-link').forEach(link => {
+                            if (link.textContent.toLowerCase().includes(searchValue)) {
+                                hasMatchingLink = true;
+                                // Highlight the link
+                                link.style.backgroundColor = '#fff3cd';
+                            }
+                        });
+                        
+                        // Check all text content (including nested elements)
+                        const contentMatch = allText.includes(searchValue);
+                        
+                        if (searchValue && (directMatch || hasMatchingLink || contentMatch)) {
                             item.style.display = '';
                             foundItems++;
                             
-                            // Highlight the matching text in title
+                            // Highlight the matching text in title if there's a direct match
                             if (title.includes(searchValue)) {
                                 titleElement.style.backgroundColor = '#fff3cd';
                                 titleElement.style.padding = '2px 5px';
                                 titleElement.style.borderRadius = '3px';
                             }
                             
-                            // Mở thư mục cha nếu là thư mục con
+                            // Highlight the matching text in description if there's a match
+                            if (descElement && desc.includes(searchValue)) {
+                                descElement.style.backgroundColor = '#fff3cd';
+                                descElement.style.padding = '2px 5px';
+                                descElement.style.borderRadius = '3px';
+                            }
+                            
+                            // Open parent folders
                             let parentFolder = item.closest('.subfolder');
                             while (parentFolder) {
                                 const parentItem = parentFolder.parentElement;
@@ -2288,21 +2358,42 @@
                             let hasVisibleChild = false;
                             
                             subfolders.forEach(subfolder => {
-                                const subTitle = subfolder.querySelector('.toc-title').textContent.toLowerCase();
-                                const subDesc = subfolder.querySelector('.toc-desc') ? 
-                                    subfolder.querySelector('.toc-desc').textContent.toLowerCase() : '';
+                                const subAllText = getAllTextContent(subfolder);
+                                const subTitleEl = subfolder.querySelector('.toc-title');
                                 
-                                if (subTitle.includes(searchValue) || subDesc.includes(searchValue)) {
+                                if (!subTitleEl) return;
+                                
+                                const subTitle = subTitleEl.textContent.toLowerCase();
+                                const subDescEl = subfolder.querySelector('.toc-desc');
+                                const subDesc = subDescEl ? subDescEl.textContent.toLowerCase() : '';
+                                
+                                // Check for matches in links inside this subfolder
+                                let subHasMatchingLink = false;
+                                subfolder.querySelectorAll('.catalogue-link, .showroom-link').forEach(link => {
+                                    if (link.textContent.toLowerCase().includes(searchValue)) {
+                                        subHasMatchingLink = true;
+                                        link.style.backgroundColor = '#fff3cd';
+                                        link.style.borderRadius = '3px';
+                                    }
+                                });
+                                
+                                if (subTitle.includes(searchValue) || subDesc.includes(searchValue) || 
+                                    subHasMatchingLink || subAllText.includes(searchValue)) {
                                     hasVisibleChild = true;
                                     subfolder.style.display = '';
                                     foundItems++;
                                     
-                                    // Highlight the matching text in the child title
+                                    // Highlight matching elements
                                     if (subTitle.includes(searchValue)) {
-                                        const subTitleEl = subfolder.querySelector('.toc-title');
                                         subTitleEl.style.backgroundColor = '#fff3cd';
                                         subTitleEl.style.padding = '2px 5px';
                                         subTitleEl.style.borderRadius = '3px';
+                                    }
+                                    
+                                    if (subDescEl && subDesc.includes(searchValue)) {
+                                        subDescEl.style.backgroundColor = '#fff3cd';
+                                        subDescEl.style.padding = '2px 5px';
+                                        subDescEl.style.borderRadius = '3px';
                                     }
                                 } else {
                                     subfolder.style.display = 'none';
@@ -2322,6 +2413,80 @@
                         }
                     });
                     
+                    // Also search and highlight standalone links (ones not inside toc-items)
+                    if (searchValue) {
+                        catalogueLinks.forEach(link => {
+                            const linkText = link.textContent.toLowerCase();
+                            const linkParent = link.closest('.toc-item');
+                            
+                            // Only process if not already processed through a toc-item
+                            if (!linkParent) {
+                                if (linkText.includes(searchValue)) {
+                                    link.style.backgroundColor = '#fff3cd';
+                                    link.style.display = 'block';
+                                    foundItems++;
+                                    
+                                    // Open parent container
+                                    const linkContainer = link.closest('.subfolder');
+                                    if (linkContainer) {
+                                        const containerParent = linkContainer.parentElement;
+                                        if (containerParent && containerParent.classList.contains('folder-collapsed')) {
+                                            containerParent.classList.remove('folder-collapsed');
+                                            const collapseIcon = containerParent.querySelector('.collapse-icon');
+                                            if (collapseIcon) {
+                                                collapseIcon.textContent = '-';
+                                            }
+                                        }
+                                    }
+                                } else if (!searchValue) {
+                                    link.style.display = 'block';
+                                } else {
+                                    link.style.display = 'none';
+                                }
+                            }
+                        });
+                        
+                        showroomLinks.forEach(link => {
+                            const linkText = link.textContent.toLowerCase();
+                            const linkParent = link.closest('.toc-item');
+                            
+                            // Only process if not already processed through a toc-item
+                            if (!linkParent) {
+                                if (linkText.includes(searchValue)) {
+                                    link.style.backgroundColor = '#fff3cd';
+                                    link.style.display = 'block';
+                                    foundItems++;
+                                    
+                                    // Open parent container
+                                    const linkContainer = link.closest('.subfolder');
+                                    if (linkContainer) {
+                                        const containerParent = linkContainer.parentElement;
+                                        if (containerParent && containerParent.classList.contains('folder-collapsed')) {
+                                            containerParent.classList.remove('folder-collapsed');
+                                            const collapseIcon = containerParent.querySelector('.collapse-icon');
+                                            if (collapseIcon) {
+                                                collapseIcon.textContent = '-';
+                                            }
+                                        }
+                                    }
+                                } else if (!searchValue) {
+                                    link.style.display = 'block';
+                                } else {
+                                    link.style.display = 'none';
+                                }
+                            }
+                        });
+                    }
+                    
+                    // Update search stats
+                    if (searchStats && searchValue) {
+                        searchStats.textContent = `Tìm thấy ${foundItems} kết quả cho "${searchValue}"`;
+                        searchStats.classList.add('pulse');
+                        setTimeout(() => {
+                            searchStats.classList.remove('pulse');
+                        }, 500);
+                    }
+                    
                     // Update loading bar
                     loadingBar.style.width = '100%';
                     setTimeout(() => {
@@ -2338,6 +2503,11 @@
                                 collapseIcon.textContent = '+';
                             }
                         });
+                        
+                        // Clear search stats
+                        if (searchStats) {
+                            searchStats.textContent = '';
+                        }
                     }
                 }, 300); // Slight delay to show the loading effect
             });
