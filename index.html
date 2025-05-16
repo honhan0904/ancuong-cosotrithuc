@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mục lục tài liệu nội bộ - An Cường</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .header h1 {
+            color: #00529b;
+            margin: 0;
+            font-size: 28px;
+        }
+        .header p {
+            color: #666;
+            margin-top: 5px;
+        }
+        .toc {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .toc-header {
+            background-color: #00529b;
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .toc-list {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        .toc-item {
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .toc-link {
+            display: flex;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.2s;
+            align-items: center;
+        }
+        .toc-link:hover {
+            background-color: #f5f8ff;
+        }
+        .toc-link.active {
+            background-color: #e8f0fe;
+            border-left: 4px solid #00529b;
+        }
+        .toc-icon {
+            margin-right: 15px;
+            font-size: 20px;
+            color: #00529b;
+            width: 24px;
+            text-align: center;
+        }
+        .toc-content {
+            flex: 1;
+        }
+        .toc-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .toc-desc {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .toc-note {
+            font-size: 12px;
+            color: #e74c3c;
+            font-style: italic;
+            margin-top: 3px;
+        }
+        .toc-status {
+            font-size: 12px;
+            margin-left: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        .subheader {
+            font-size: 16px;
+            font-weight: 600;
+            color: #00529b;
+            margin: 15px 0 10px 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+        .level-1 {
+            padding-left: 20px;
+        }
+        .level-2 {
+            padding-left: 60px;
+        }
+        .level-3 {
+            padding-left: 100px;
+        }
+        .level-4 {
+            padding-left: 140px;
+        }
+        .level-5 {
+            padding-left: 180px;
+        }
+        .search-box {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .search-box .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+        .department-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0 15px 60px;
+        }
+        .department-badge {
+            background-color: #e1f5fe;
+            color: #0277bd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .department-badge:hover {
+            background-color: #b3e5fc;
+        }
+        .folder-collapsed .subfolder {
+            display: none;
+        }
+        .folder-toggle {
+            cursor: pointer;
+        }
+        .collapse-icon {
+            margin-left: auto;
+            font-size: 18px;
+            color: #999;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .toc-link {
+                padding: 12px 15px;
+            }
+            .department-list {
+                margin-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MỤC LỤC TÀI LIỆU NỘI BỘ</h1>
+            <p>An Cường - Cập nhật: 16/05/2025</p>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" placeholder="Tìm kiếm tài liệu...">
+            <span class="search-icon">🔍</span>
+        </div>
+        
+        <div class="toc">
+            <div class="toc-header">TÀI LIỆU NỘI BỘ</div>
+            <ul class="toc-list">
+                <!-- 01. THÔNG TIN CÔNG TY -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">📊</div>
+                        <div class="toc-content">
+                            <div class="toc-title">01. THÔNG TIN CÔNG TY</div>
+                            <p class="toc-desc">Thông tin cơ bản về công ty, hồ sơ pháp lý và cơ cấu tổ chức</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    
+                    <!-- Nội dung THÔNG TIN CÔNG TY -->
+                    <ul class="toc-list subfolder">
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📑</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">01. SƠ ĐỒ TỔ CHỨC</div>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <!-- 02. GIẤY PHÉP KINH DOANH CÔNG TY -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">📜</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">02. GIẤY PHÉP KINH DOANH CÔNG TY</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            
+                            <ul class="toc-list subfolder">
+                                <!-- CPG - AN CƯỜNG -->
+                                <li class="toc-item folder-collapsed">
+                                    <a href="#" class="toc-link level-3 folder-toggle">
+                                        <div class="toc-icon">🏢</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. CPG - AN CƯỜNG</div>
+                                        </div>
+                                        <span class="collapse-icon">+</span>
+                                    </a>
+                                    
+                                    <ul class="toc-list subfolder">
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">01. GIẤY PHÉP KINH DOANH CÔNG TY CPG AN CƯỜNG</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">02. GIẤY PHÉP KINH DOANH CHI NHÁNH</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">03. GIẤY PHÉP ĐỊA ĐIỂM KINH DOANH</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">04. GIẤY PHÉP KINH DOANH VẬN TẢI</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">05. CHI NHÁNH HÀ NỘI</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">06. CHI NHÁNH ĐÀ NẴNG</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">07. VĂN PHÒNG ĐẠI DIỆN CAMPUCHIA</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <!-- SXG - AN CƯỜNG -->
+                                <li class="toc-item folder-collapsed">
+                                    <a href="#" class="toc-link level-3 folder-toggle">
+                                        <div class="toc-icon">🏭</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. SXG - AN CƯỜNG</div>
+                                        </div>
+                                        <span class="collapse-icon">+</span>
+                                    </a>
+                                    
+                                    <ul class="toc-list subfolder">
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">01. GIẤY PHÉP KINH DOANH CÔNG TY SXG AN CƯỜNG</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📄</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">02. GIẤY PHÉP ĐỊA ĐIỂM KINH DOANH</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- THẨM QUYỀN VÀ ỦY QUYỀN PHÊ DUYỆT -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🔐</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">03. THẨM QUYỀN VÀ ỦY QUYỀN PHÊ DUYỆT</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item folder-collapsed">
+                                    <a href="#" class="toc-link level-3 folder-toggle">
+                                        <div class="toc-icon">📅</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">2025</div>
+                                        </div>
+                                        <span class="collapse-icon">+</span>
+                                    </a>
+                                    
+                                    <ul class="toc-list subfolder">
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📃</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">01. THẨM QUYỀN</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📃</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">02. CPG - GIẤY ỦY QUYỀN</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="toc-item">
+                                            <a href="https://ancuong.com" class="toc-link level-4">
+                                                <div class="toc-icon">📃</div>
+                                                <div class="toc-content">
+                                                    <div class="toc-title">03. SXG - GIẤY ỦY QUYỀN</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 02. CHÍNH SÁCH & QUY ĐỊNH -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">📋</div>
+                        <div class="toc-content">
+                            <div class="toc-title">02. CHÍNH SÁCH & QUY ĐỊNH</div>
+                            <p class="toc-desc">Các quy định, chính sách và quy tắc áp dụng trong công ty</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    
+                    <!-- Nội dung CHÍNH SÁCH & QUY ĐỊNH -->
+                    <ul class="toc-list subfolder">
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📒</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">00. SỔ TAY NHÂN VIÊN</div>
+                                    <p class="toc-desc">Hướng dẫn toàn diện dành cho nhân viên mới và hiện tại</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📝</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">01. QUY ĐỊNH LAO ĐỘNG</div>
+                                    <p class="toc-desc">Quy định về thời gian làm việc, nghỉ phép và các vấn đề liên quan</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🖨️</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">02. QUY ĐỊNH CẤP PHÁT THIẾT BỊ</div>
+                                    <p class="toc-desc">Quy trình và chính sách cấp phát thiết bị cho nhân viên</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📄</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">03. CHÍNH SÁCH CHUNG</div>
+                                    <p class="toc-desc">Các chính sách chung áp dụng toàn công ty</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 03. TÀI NGUYÊN CHUNG -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">📁</div>
+                        <div class="toc-content">
+                            <div class="toc-title">03. TÀI NGUYÊN CHUNG</div>
+                            <p class="toc-desc">Tài nguyên dùng chung dành cho tất cả nhân viên</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    
+                    <!-- Nội dung TÀI NGUYÊN CHUNG -->
+                    <ul class="toc-list subfolder">
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">💰</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">01. THÔNG TIN THANH TOÁN</div>
+                                    <p class="toc-desc">Thông tin tài khoản và hướng dẫn thanh toán</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 04. QUY TRÌNH CÁC PHÒNG BAN -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">📈</div>
+                        <div class="toc-content">
+                            <div class="toc-title">04. QUY TRÌNH CÁC PHÒNG BAN</div>
+                            <p class="toc-desc">Quy trình làm việc của từng phòng ban trong công ty</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    
+                    <!-- Nội dung QUY TRÌNH CÁC PHÒNG BAN -->
+                    <ul class="toc-list subfolder">
+                        <!-- CHUỖI CUNG ỨNG -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🔄</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">CHUỖI CUNG ỨNG</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">🎓</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">05. ACADEMY</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- DỰ ÁN XUẤT KHẨU -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🌍</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">DỰ ÁN XUẤT KHẨU</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">🎓</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">05. ACADEMY</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- HÀNH CHÁNH -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🏢</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">HÀNH CHÁNH</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- KẾ HOẠCH VẬT TƯ -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">📦</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">KẾ HOẠCH VẬT TƯ</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- KẾ TOÁN -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">💵</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">KẾ TOÁN</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- KINH DOANH TIẾP THỊ -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🏪</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">KINH DOANH TIẾP THỊ</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- NHÀ MÁY NỘI THẤT -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🪑</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">NHÀ MÁY NỘI THẤT</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📊</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">05. QUY CHUẨN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📐</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">06. TIÊU CHUẨN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">🎓</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">07. ĐÀO TẠO</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- NHÀ MÁY VÁN CÔNG NGHIỆP -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🏭</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">NHÀ MÁY VÁN CÔNG NGHIỆP</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📐</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">05. TIÊU CHUẨN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- NHÂN SỰ -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">👥</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">NHÂN SỰ</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- PHÁP CHẾ -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">⚖️</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">PHÁP CHẾ</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- TRUNG TÂM DỊCH VỤ KHÁCH HÀNG -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🛎️</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">TRUNG TÂM DỊCH VỤ KHÁCH HÀNG</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📋</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. QUY TRÌNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📖</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HƯỚNG DẪN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📝</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. BIỂU MẪU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📏</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. QUY ĐỊNH</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📊</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">05. QUY CHUẨN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 05. TÀI LIỆU ĐÀO TẠO -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">🎓</div>
+                        <div class="toc-content">
+                            <div class="toc-title">05. TÀI LIỆU ĐÀO TẠO</div>
+                            <p class="toc-desc">Tài liệu đào tạo nhân viên và phát triển kỹ năng</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    
+                    <!-- Nội dung TÀI LIỆU ĐÀO TẠO -->
+                    <ul class="toc-list subfolder">
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📚</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">00. TÀI LIỆU RIÊNG CHO TỪNG PHÒNG BAN (NẾU CÓ)</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📘</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">01. TÀI LIỆU CHUNG - CÁC THÔNG TIN CHUNG KHÔNG LIÊN QUAN NHAU</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">👥</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">02. CSKH & TƯ VẤN VẬT LIỆU</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🏪</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">03. SHOWROOM - TÀI LIỆU CHO NV MỚI SHOWROOM</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🧩</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">04. GÓC VẬT LIỆU</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">💻</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">05. CNTT (SAP, HRIS, CRM,...)</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📝</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">06. TÀI LIỆU VỀ LẬP HỢP ĐỒNG</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 06. BIỂU MẪU -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">📝</div>
+                        <div class="toc-content">
+                            <div class="toc-title">06. BIỂU MẪU</div>
+                            <p class="toc-desc">Các biểu mẫu chuẩn sử dụng trong công ty</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    
+                    <!-- Nội dung BIỂU MẪU -->
+                    <ul class="toc-list subfolder">
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🛒</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">BIỂU MẪU ĐỀ NGHỊ MUA HÀNG</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 07. CHỨNG CHỈ - CHỨNG NHẬN - GIẢI THƯỞNG -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">🏆</div>
+                        <div class="toc-content">
+                            <div class="toc-title">07. CHỨNG CHỈ - CHỨNG NHẬN - GIẢI THƯỞNG</div>
+                            <p class="toc-desc">Các chứng chỉ, giấy chứng nhận và giải thưởng công ty đạt được</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    
+                    <!-- Nội dung CHỨNG CHỈ - CHỨNG NHẬN - GIẢI THƯỞNG -->
+                    <ul class="toc-list subfolder">
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📋</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">00. DANH MỤC BẰNG KHEN - CHỨNG NHẬN</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🏅</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">01. BẰNG KHEN CỦA SẾP</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🏅</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">02. BẰNG KHEN CÔNG TY</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🤝</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">03. TÀI TRỢ TRÁCH NHIỆM XÃ HỘI - THƯ CÁM ƠN</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📜</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">04. CHỨNG NHẬN</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🔍</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">05. HƯỚNG DẪN TRƯNG BÀY CHỨNG CHỈ TẠI SHOWROOM</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">🎨</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">06. FILE THIẾT KẾ</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 08. TRUYỀN THÔNG - NHẬN DIỆN THƯƠNG HIỆU -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">🌐</div>
+                        <div class="toc-content">
+                            <div class="toc-title">08. TRUYỀN THÔNG - NHẬN DIỆN THƯƠNG HIỆU</div>
+                            <p class="toc-desc">Tài liệu về thương hiệu và hướng dẫn truyền thông</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    <ul class="toc-list subfolder">
+                        <!-- 01. THƯ VIỆN MÀU -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🎨</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">01. THƯ VIỆN MÀU</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. MFC</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. LAMINATE KINGDOM</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. LAMINATE KINGDOM BASIC</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">04. FORMICA</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">05. LAMINATE IMO</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">06. HIGH QUALITY - ACRYLIC</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">07. PREMIUM - SKY LUX ACRYLIC</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">08. STANDARD - ARILUX PLUS</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">09. WALL & CEILING PANEL</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">10. ACOUSTIC PANEL</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">11. LAMBRI PANEL</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">12. SÀN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">13. SÀN XƯƠNG CÁ CÔNG NGHIỆP KHÔ 1M2-2M4</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">14. KRONO</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">15. VENEER</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">16. ECO VENEER</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">17. EXTERIOR FILM - Tấm trang trí ngoài trời</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">18. FPB</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">19. NEP SÀN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">20. PVC</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">21. GIẤY DÁN TƯỜNG (WP)</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">22. 2D PANEL</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">23. 3D PANEL</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">24. OP</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">25. COMPACT</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">26. PVC-WPB</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📑</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">27. PVC DECAL</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- 02. HÌNH ẢNH -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🖼️</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">02. HÌNH ẢNH</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">🏪</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. HÌNH ẢNH SHOWROOM</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📷</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">02. HÌNH ẢNH SẢN PHẨM - ỨNG DỤNG</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">🏗️</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">03. HÌNH ẢNH DỰ ÁN</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- 03. CATALOGUE -->
+                        <li class="toc-item">
+                            <a href="https://ancuong.com" class="toc-link level-2">
+                                <div class="toc-icon">📚</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">03. CATALOGUE</div>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <!-- 04. COPORATE BRANDING -->
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
+                                <div class="toc-icon">🏢</div>
+                                <div class="toc-content">
+                                    <div class="toc-title">04. COPORATE BRANDING</div>
+                                </div>
+                                <span class="collapse-icon">+</span>
+                            </a>
+                            <ul class="toc-list subfolder">
+                                <li class="toc-item">
+                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                        <div class="toc-icon">📌</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title">01. BỘ TEM NHÃN QUY CHUẨN HÀNG HÓA QUY CHUẨN NHẬN DIỆN THƯƠNG HIỆU</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 09. TÀI LIỆU HỆ THỐNG CNTT -->
+                <li class="toc-item folder-collapsed">
+                    <a href="#" class="toc-link level-1 folder-toggle">
+                        <div class="toc-icon">💻</div>
+                        <div class="toc-content">
+                            <div class="toc-title">09. TÀI LIỆU HỆ THỐNG CNTT</div>
+                            <p class="toc-desc">Tài liệu về hệ thống CNTT và hướng dẫn sử dụng</p>
+                        </div>
+                        <span class="collapse-icon">+</span>
+                    </a>
+                    <ul class="toc-list subfolder">
+                        <!-- Đây là nơi để thêm các mục con cho TÀI LIỆU HỆ THỐNG CNTT -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 An Cường - Tài liệu nội bộ. Cập nhật lần cuối: 16/05/2025</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Xử lý sự kiện mở/đóng thư mục
+            const folderToggles = document.querySelectorAll('.folder-toggle');
+            
+            folderToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const parentItem = this.parentElement;
+                    parentItem.classList.toggle('folder-collapsed');
+                    
+                    const collapseIcon = this.querySelector('.collapse-icon');
+                    if (parentItem.classList.contains('folder-collapsed')) {
+                        collapseIcon.textContent = '+';
+                    } else {
+                        collapseIcon.textContent = '-';
+                    }
+                });
+            });
+            
+            // Làm cho department-badge có thể click để lọc phòng ban
+            const departmentBadges = document.querySelectorAll('.department-badge');
+            
+            departmentBadges.forEach(badge => {
+                badge.addEventListener('click', function() {
+                    const departmentName = this.textContent.trim();
+                    const searchInput = document.querySelector('.search-box input');
+                    searchInput.value = departmentName;
+                    
+                    // Kích hoạt sự kiện input để thực hiện tìm kiếm
+                    const event = new Event('input', { bubbles: true });
+                    searchInput.dispatchEvent(event);
+                });
+            });
+            
+            // Xử lý tìm kiếm
+            const searchInput = document.querySelector('.search-box input');
+            
+            searchInput.addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                const allItems = document.querySelectorAll('.toc-item');
+                
+                allItems.forEach(item => {
+                    const titleElement = item.querySelector('.toc-title');
+                    if (!titleElement) return;
+                    
+                    const title = titleElement.textContent.toLowerCase();
+                    const descElement = item.querySelector('.toc-desc');
+                    const desc = descElement ? descElement.textContent.toLowerCase() : '';
+                    
+                    if (title.includes(searchValue) || desc.includes(searchValue)) {
+                        item.style.display = '';
+                        
+                        // Mở thư mục cha nếu là thư mục con
+                        let parentFolder = item.closest('.subfolder');
+                        while (parentFolder) {
+                            const parentItem = parentFolder.parentElement;
+                            if (parentItem.classList.contains('folder-collapsed')) {
+                                parentItem.classList.remove('folder-collapsed');
+                                const collapseIcon = parentItem.querySelector('.collapse-icon');
+                                if (collapseIcon) {
+                                    collapseIcon.textContent = '-';
+                                }
+                            }
+                            parentFolder = parentItem.closest('.subfolder');
+                        }
+                    } else {
+                        // Kiểm tra xem có thư mục con nào phù hợp không
+                        const subfolders = item.querySelectorAll('.subfolder .toc-item');
+                        let hasVisibleChild = false;
+                        
+                        subfolders.forEach(subfolder => {
+                            const subTitle = subfolder.querySelector('.toc-title').textContent.toLowerCase();
+                            const subDesc = subfolder.querySelector('.toc-desc') ? 
+                                subfolder.querySelector('.toc-desc').textContent.toLowerCase() : '';
+                            
+                            if (subTitle.includes(searchValue) || subDesc.includes(searchValue)) {
+                                hasVisibleChild = true;
+                                subfolder.style.display = '';
+                            } else {
+                                subfolder.style.display = 'none';
+                            }
+                        });
+                        
+                        if (hasVisibleChild) {
+                            item.style.display = '';
+                            item.classList.remove('folder-collapsed');
+                            const collapseIcon = item.querySelector('.collapse-icon');
+                            if (collapseIcon) {
+                                collapseIcon.textContent = '-';
+                            }
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
