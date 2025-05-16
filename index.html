@@ -5,151 +5,293 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mục lục tài liệu nội bộ - An Cường</title>
     <style>
+        /* Font import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --primary-color: #00529b;
+            --primary-dark: #003c77;
+            --primary-light: #e8f0fe;
+            --primary-lighter: #f5f8ff;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --text-muted: #666;
+            --border-color: #e0e0e0;
+            --border-light: #f0f0f0;
+            --success-color: #388e3c;
+            --success-light: #e8f5e9;
+            --danger-color: #e74c3c;
+            --transition-normal: all 0.3s ease;
+            --transition-fast: all 0.2s ease;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 2px 15px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
-            color: #333;
+            color: var(--text-color);
+            line-height: 1.5;
         }
+        
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
         }
+        
         .header {
             text-align: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            width: 100px;
+            height: 5px;
+            background-color: var(--primary-color);
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+        
         .header h1 {
-            color: #00529b;
+            color: var(--primary-color);
             margin: 0;
             font-size: 28px;
+            letter-spacing: 0.5px;
+            font-weight: 700;
         }
+        
         .header p {
-            color: #666;
+            color: var(--text-muted);
             margin-top: 5px;
+            font-size: 15px;
         }
+        
         .toc {
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            transition: var(--transition-normal);
         }
+        
+        .toc:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        
         .toc-header {
-            background-color: #00529b;
+            background-color: var(--primary-color);
             color: white;
-            padding: 15px 20px;
+            padding: 18px 20px;
             font-size: 18px;
             font-weight: bold;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .toc-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1));
+        }
+        
         .toc-list {
             padding: 0;
             margin: 0;
             list-style-type: none;
         }
+        
         .toc-item {
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition-fast);
         }
+        
+        .toc-item:last-child {
+            border-bottom: none;
+        }
+        
         .toc-link {
             display: flex;
             padding: 15px 20px;
             text-decoration: none;
-            color: #333;
-            transition: background-color 0.2s;
+            color: var(--text-color);
+            transition: var(--transition-fast);
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
+        
         .toc-link:hover {
-            background-color: #f5f8ff;
+            background-color: var(--primary-lighter);
         }
+        
         .toc-link.active {
-            background-color: #e8f0fe;
-            border-left: 4px solid #00529b;
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary-color);
         }
+        
+        .toc-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 82, 155, 0.05);
+            z-index: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .toc-link:hover::after {
+            width: 100%;
+        }
+        
         .toc-icon {
             margin-right: 15px;
             font-size: 20px;
-            color: #00529b;
+            color: var(--primary-color);
             width: 24px;
             text-align: center;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
         }
+        
+        .toc-link:hover .toc-icon {
+            transform: scale(1.15);
+        }
+        
         .toc-content {
             flex: 1;
+            position: relative;
+            z-index: 1;
         }
+        
         .toc-title {
             font-weight: 600;
             margin-bottom: 5px;
+            transition: color 0.2s;
         }
+        
+        .toc-link:hover .toc-title {
+            color: var(--primary-color);
+        }
+        
         .toc-desc {
             font-size: 14px;
-            color: #666;
+            color: var(--text-muted);
             margin: 0;
+            transition: color 0.2s;
         }
+        
         .toc-note {
             font-size: 12px;
-            color: #e74c3c;
+            color: var(--danger-color);
             font-style: italic;
             margin-top: 3px;
         }
+        
         .toc-status {
             font-size: 12px;
             margin-left: 10px;
             padding: 3px 8px;
             border-radius: 12px;
-            background-color: #e8f5e9;
-            color: #388e3c;
+            background-color: var(--success-light);
+            color: var(--success-color);
         }
+        
         .subheader {
             font-size: 16px;
             font-weight: 600;
-            color: #00529b;
+            color: var(--primary-color);
             margin: 15px 0 10px 20px;
             padding-top: 10px;
             border-top: 1px dashed #ccc;
         }
+        
         .level-1 {
             padding-left: 20px;
         }
+        
         .level-2 {
             padding-left: 60px;
         }
+        
         .level-3 {
             padding-left: 100px;
         }
+        
         .level-4 {
             padding-left: 140px;
         }
+        
         .level-5 {
             padding-left: 180px;
         }
+        
         .search-box {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             position: relative;
         }
+        
         .search-box input {
             width: 100%;
-            padding: 12px 45px 12px 15px;
+            padding: 14px 45px 14px 20px;
             border: 1px solid #ddd;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 16px;
             box-sizing: border-box;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
         }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 82, 155, 0.15);
+        }
+        
         .search-box .search-icon {
             position: absolute;
             right: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: #666;
+            color: var(--text-muted);
+            transition: color 0.2s;
         }
+        
+        .search-box input:focus + .search-icon {
+            color: var(--primary-color);
+        }
+        
         .department-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin: 15px 0 15px 60px;
         }
+        
         .department-badge {
             background-color: #e1f5fe;
             color: #0277bd;
@@ -157,44 +299,217 @@
             border-radius: 20px;
             font-size: 13px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: var(--transition-fast);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
+        
         .department-badge:hover {
             background-color: #b3e5fc;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
         }
+        
         .folder-collapsed .subfolder {
             display: none;
         }
+        
         .folder-toggle {
             cursor: pointer;
         }
+        
         .collapse-icon {
             margin-left: auto;
             font-size: 18px;
             color: #999;
+            transition: transform 0.3s ease, color 0.2s;
+            z-index: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
         }
+        
+        .toc-link:hover .collapse-icon {
+            color: var(--primary-color);
+        }
+        
         .footer {
             text-align: center;
             margin-top: 30px;
             font-size: 14px;
-            color: #666;
+            color: var(--text-muted);
             padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
+            border-top: 1px solid var(--border-color);
         }
+        
+        /* Animation for subfolder opening/closing */
+        .subfolder {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        
+        .folder-collapsed .subfolder {
+            max-height: 0;
+        }
+        
+        /* Tooltip */
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+        }
+        
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s, transform 0.2s;
+            transform: translateX(-50%) translateY(10px);
+            z-index: 10;
+        }
+        
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Loading animation */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.3s ease-out;
+        }
+        
+        /* Catalogue specific styles */
+        .catalogue-section {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .catalogue-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .catalogue-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+        
+        .catalogue-link {
+            display: block;
+            padding: 8px 15px 8px 30px;
+            position: relative;
+            transition: var(--transition-fast);
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .catalogue-link:hover {
+            background-color: var(--primary-lighter);
+            padding-left: 35px;
+        }
+        
+        .catalogue-link::before {
+            content: '•';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            color: var(--primary-color);
+        }
+        
+        /* Responsive styles */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
             }
+            
             .toc-link {
                 padding: 12px 15px;
             }
+            
             .department-list {
                 margin-left: 20px;
+            }
+            
+            .level-2 {
+                padding-left: 40px;
+            }
+            
+            .level-3 {
+                padding-left: 60px;
+            }
+            
+            .level-4 {
+                padding-left: 80px;
+            }
+            
+            .level-5 {
+                padding-left: 100px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="loading-bar" id="loading-bar"></div>
     <div class="container">
         <div class="header">
             <h1>MỤC LỤC TÀI LIỆU NỘI BỘ</h1>
@@ -202,7 +517,7 @@
         </div>
         
         <div class="search-box">
-            <input type="text" placeholder="Tìm kiếm tài liệu...">
+            <input type="text" placeholder="Tìm kiếm tài liệu..." id="search-input">
             <span class="search-icon">🔍</span>
         </div>
         
@@ -1229,7 +1544,7 @@
                             </a>
                             <ul class="toc-list subfolder">
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/LT1F4RVE5ssFv9N" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">01. MFC</div>
@@ -1237,7 +1552,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/VCCHbWehR6fHwsI" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">02. LAMINATE KINGDOM</div>
@@ -1245,7 +1560,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/hje8mieEVSQEFs2" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">03. LAMINATE KINGDOM BASIC</div>
@@ -1253,7 +1568,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/k0p35cLmRyC6NMk" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">04. FORMICA</div>
@@ -1261,7 +1576,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/gJ1OII1xQTJO8d1" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">05. LAMINATE IMO</div>
@@ -1269,7 +1584,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/75VHra8L1ZzlB7F" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">06. HIGH QUALITY - ACRYLIC</div>
@@ -1277,7 +1592,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/wdbB8VoLfpYF1Tc" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">07. PREMIUM - SKY LUX ACRYLIC</div>
@@ -1285,7 +1600,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/2omKojUkEIlVTcp" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">08. STANDARD - ARILUX PLUS</div>
@@ -1293,7 +1608,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/LAp90zqG2NILjbv" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">09. WALL & CEILING PANEL</div>
@@ -1301,7 +1616,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/0XIuvuPpRGp5Rx5" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">10. ACOUSTIC PANEL</div>
@@ -1309,7 +1624,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/JDYxeVDuIngskYl" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">11. LAMBRI PANEL</div>
@@ -1317,7 +1632,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/6hgpuMTG77KRijx" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">12. SÀN</div>
@@ -1325,7 +1640,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/vHd0p6LNvOClSTe" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">13. SÀN XƯƠNG CÁ CÔNG NGHIỆP KHÔ 1M2-2M4</div>
@@ -1333,7 +1648,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/yOUCr4klSQvjI3q" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">14. KRONO</div>
@@ -1341,7 +1656,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/X9YO2PGWULRBxCw" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">15. VENEER</div>
@@ -1349,7 +1664,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/9fCWZBjJSvfcGaG" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">16. ECO VENEER</div>
@@ -1357,7 +1672,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/F1vyFbeHbEDSuQt" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">17. EXTERIOR FILM - Tấm trang trí ngoài trời</div>
@@ -1365,7 +1680,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/me5qNBJHsRjPEH9" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">18. FPB</div>
@@ -1373,15 +1688,15 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/nQgxb2QUfEf4BMr" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
-                                            <div class="toc-title">19. NEP SÀN</div>
+                                            <div class="toc-title">19. NẸP SÀN</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/H83pcLV9AMWP0it" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">20. PVC</div>
@@ -1389,7 +1704,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/QPB5dRQO4my9bUT" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">21. GIẤY DÁN TƯỜNG (WP)</div>
@@ -1397,7 +1712,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/x0njQxaPOEAYcqJ" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">22. 2D PANEL</div>
@@ -1405,7 +1720,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/4qvPQIa92yBIwYr" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">23. 3D PANEL</div>
@@ -1413,7 +1728,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/3iudyEK7pXOmwM3" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">24. OP</div>
@@ -1421,7 +1736,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/bYZStGDIy54DZJW" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">25. COMPACT</div>
@@ -1429,7 +1744,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/GJFUycoD2ki21u5" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">26. PVC-WPB</div>
@@ -1437,7 +1752,7 @@
                                     </a>
                                 </li>
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://filecloud.ancuong.com/index.php/s/TG2BezMjRcDqH6p" class="toc-link level-3">
                                         <div class="toc-icon">📑</div>
                                         <div class="toc-content">
                                             <div class="toc-title">27. PVC DECAL</div>
@@ -1485,13 +1800,117 @@
                         </li>
                         
                         <!-- 03. CATALOGUE -->
-                        <li class="toc-item">
-                            <a href="https://docs.google.com/spreadsheets/d/15yrav6IypqDP2_on8vlRutyocQHEG0DSWE9sc0aQSmU/edit?usp=sharing" class="toc-link level-2">
+                        <li class="toc-item folder-collapsed">
+                            <a href="#" class="toc-link level-2 folder-toggle">
                                 <div class="toc-icon">📚</div>
                                 <div class="toc-content">
                                     <div class="toc-title">03. CATALOGUE</div>
                                 </div>
+                                <span class="collapse-icon">+</span>
                             </a>
+                            <ul class="toc-list subfolder">
+                                <!-- 01. VẬT LIỆU -->
+                                <li class="toc-item">
+                                    <div class="toc-link level-3">
+                                        <div class="toc-icon">📂</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title catalogue-title">01. VẬT LIỆU</div>
+                                            
+                                            <a href="https://catalogue.ancuong.com/innovative-mfc-mdf-melamine-panels/" target="_blank" class="catalogue-link">01. CATALOGUE INNOVATIVE MFC & MDF MELAMINE PANELS</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/high-gloss-acrylic-panel/" target="_blank" class="catalogue-link">02. CATALOGUE HIGH GLOSS ACRYLIC PANEL</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/laminate-kingdom-high-pressure-laminate/" target="_blank" class="catalogue-link">03. CATALOGUE LAMINATE KINGDOM - HIGH PRESSURE LAMINATE</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/laminate-kingdom-trend-collection/" target="_blank" class="catalogue-link">04. CATALOGUE LAMINATE KINGDOM TREND COLLECTION</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/laminate-flooring/" target="_blank" class="catalogue-link">05. CATALOGUE LAMINATE FLOORING</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/fireproof-board/" target="_blank" class="catalogue-link">06. CATALOGUE FIREPROOF BOARD</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/veneer/" target="_blank" class="catalogue-link">07. CATALOGUE VENEER</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/arilux-plus/" target="_blank" class="catalogue-link">08. CATALOGUE STANDARD - ACRYLIC BASIC</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/kingdom-basic/" target="_blank" class="catalogue-link">09. CATALOGUE KINGDOM BASIC</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/53121999/" target="_blank" class="catalogue-link">10. CATALOGUE ECO-VENEER - REALISTIC & MORE</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <!-- 02. GIẢI PHÁP -->
+                                <li class="toc-item">
+                                    <div class="toc-link level-3">
+                                        <div class="toc-icon">📂</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title catalogue-title">02. GIẢI PHÁP</div>
+                                            
+                                            <a href="https://catalogue.ancuong.com/wpb-pvc-foil-waterproof-board/" target="_blank" class="catalogue-link">01. CATALOGUE WPB® PVC FOIL - WATERPROOF BOARD CATALOGUE</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/decorative-wall-panels/" target="_blank" class="catalogue-link">02. CATALOGUE DECORATIVE WALL PANELS</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/decorative-wallpaper/" target="_blank" class="catalogue-link">03. CATALOGUE DECORATIVE WALLPAPER</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/636264482/" target="_blank" class="catalogue-link">04. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 6</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/209526489/" target="_blank" class="catalogue-link">05. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 5</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/536481320/" target="_blank" class="catalogue-link">06. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 4</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/536726489/" target="_blank" class="catalogue-link">07. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 3</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/535941343/" target="_blank" class="catalogue-link">08. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 2</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/536218920/" target="_blank" class="catalogue-link">09. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 1</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/121882056/" target="_blank" class="catalogue-link">10. SYNCHRONIZED COLLECTION BY AN CƯỜNG</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <!-- 03. ỨNG DỤNG NỘI THẤT -->
+                                <li class="toc-item">
+                                    <div class="toc-link level-3">
+                                        <div class="toc-icon">📂</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title catalogue-title">03. ỨNG DỤNG NỘI THẤT</div>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/52921482/" target="_blank" class="catalogue-link">01. CATALOGUE MẪU THIẾT KẾ PHÒNG KHÁCH</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/53015383/" target="_blank" class="catalogue-link">02. CATALOGUE MẪU THIẾT KẾ PHÒNG NGỦ</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/52433263/" target="_blank" class="catalogue-link">03. CATALOGUE MẪU THIẾT KẾ BẾP</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/53121999/" target="_blank" class="catalogue-link">04. CATALOGUE HÌNH ẢNH ỨNG DỤNG - ECO VENEER</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/53243504/" target="_blank" class="catalogue-link">05. CATALOGUE LAMINATE FLOORING COLLECTION - ỨNG DỤNG VÁN SÀN</a>
+                                            
+                                            <a href="https://catalogue.ancuong.com/materials-for-shipbuilding/" target="_blank" class="catalogue-link">06. CATALOGUE MATERIALS FOR SHIPBUILDING</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <!-- 04. PHỤ KIỆN & SẢN PHẨM KHÁC -->
+                                <li class="toc-item">
+                                    <div class="toc-link level-3">
+                                        <div class="toc-icon">📂</div>
+                                        <div class="toc-content">
+                                            <div class="toc-title catalogue-title">04. PHỤ KIỆN & SẢN PHẨM KHÁC</div>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/618713891/" target="_blank" class="catalogue-link">01. HETTICH CATALOGUE</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/417281817/" target="_blank" class="catalogue-link">02. IMUNDEX CATALOGUE</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/354425868/" target="_blank" class="catalogue-link">03. SCHNEIDER ELECTRIC</a>
+                                            
+                                            <a href="https://catalogues.ancuong.com/view/76728738/" target="_blank" class="catalogue-link">04. DOOR CATALOGUE - CATALOGUE CỬA</a>
+
+                                            <a href="https://catalogue.ancuong.com/pvc-abs-edges/" target="_blank" class="catalogue-link">05. PVC / ABS EDGES</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                         
                         <!-- 04. COPORATE BRANDING -->
@@ -1505,7 +1924,7 @@
                             </a>
                             <ul class="toc-list subfolder">
                                 <li class="toc-item">
-                                    <a href="https://ancuong.com" class="toc-link level-3">
+                                    <a href="https://drive.google.com/drive/folders/1FIaOHXrHRizC_B2ZS2Sp858QPrCGQkbt?usp=sharing" class="toc-link level-3">
                                         <div class="toc-icon">📌</div>
                                         <div class="toc-content">
                                             <div class="toc-title">01. BỘ TEM NHÃN QUY CHUẨN HÀNG HÓA QUY CHUẨN NHẬN DIỆN THƯƠNG HIỆU</div>
@@ -1539,22 +1958,80 @@
         </div>
     </div>
     
+    <div class="back-to-top" id="back-to-top">↑</div>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Xử lý sự kiện mở/đóng thư mục
+            // Simulate page loading
+            const loadingBar = document.getElementById('loading-bar');
+            let width = 0;
+            const loadingInterval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(loadingInterval);
+                    loadingBar.style.width = '100%';
+                    setTimeout(() => {
+                        loadingBar.style.opacity = '0';
+                    }, 500);
+                } else {
+                    width += Math.random() * 10;
+                    loadingBar.style.width = Math.min(width, 100) + '%';
+                }
+            }, 100);
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                // Smooth scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Xử lý sự kiện mở/đóng thư mục với hiệu ứng
             const folderToggles = document.querySelectorAll('.folder-toggle');
             
             folderToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(e) {
                     e.preventDefault();
                     const parentItem = this.parentElement;
+                    
+                    // Toggle class for styling
                     parentItem.classList.toggle('folder-collapsed');
                     
+                    // Update collapse icon
                     const collapseIcon = this.querySelector('.collapse-icon');
-                    if (parentItem.classList.contains('folder-collapsed')) {
-                        collapseIcon.textContent = '+';
-                    } else {
-                        collapseIcon.textContent = '-';
+                    collapseIcon.textContent = parentItem.classList.contains('folder-collapsed') ? '+' : '-';
+                    
+                    // Add pulse animation to the icon
+                    collapseIcon.style.animation = 'none';
+                    setTimeout(() => {
+                        collapseIcon.style.animation = 'pulse 0.5s';
+                    }, 10);
+                });
+            });
+            
+            // Highlight active item when clicked
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Don't add active class to folder toggles
+                    if (!this.classList.contains('folder-toggle')) {
+                        // Remove active class from all links
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        
+                        // Add active class to the clicked link
+                        this.classList.add('active');
                     }
                 });
             });
@@ -1565,76 +2042,164 @@
             departmentBadges.forEach(badge => {
                 badge.addEventListener('click', function() {
                     const departmentName = this.textContent.trim();
-                    const searchInput = document.querySelector('.search-box input');
+                    const searchInput = document.getElementById('search-input');
                     searchInput.value = departmentName;
+                    searchInput.focus();
                     
                     // Kích hoạt sự kiện input để thực hiện tìm kiếm
                     const event = new Event('input', { bubbles: true });
                     searchInput.dispatchEvent(event);
+                    
+                    // Show visual feedback
+                    this.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
                 });
             });
             
-            // Xử lý tìm kiếm
-            const searchInput = document.querySelector('.search-box input');
+            // Enhanced search functionality
+            const searchInput = document.getElementById('search-input');
             
             searchInput.addEventListener('input', function() {
+                // Show loading bar during search
+                loadingBar.style.opacity = '1';
+                loadingBar.style.width = '70%';
+                
                 const searchValue = this.value.toLowerCase();
                 const allItems = document.querySelectorAll('.toc-item');
+                let foundItems = 0;
                 
-                allItems.forEach(item => {
-                    const titleElement = item.querySelector('.toc-title');
-                    if (!titleElement) return;
-                    
-                    const title = titleElement.textContent.toLowerCase();
-                    const descElement = item.querySelector('.toc-desc');
-                    const desc = descElement ? descElement.textContent.toLowerCase() : '';
-                    
-                    if (title.includes(searchValue) || desc.includes(searchValue)) {
-                        item.style.display = '';
+                setTimeout(() => {
+                    allItems.forEach(item => {
+                        const titleElement = item.querySelector('.toc-title');
+                        if (!titleElement) return;
                         
-                        // Mở thư mục cha nếu là thư mục con
-                        let parentFolder = item.closest('.subfolder');
-                        while (parentFolder) {
-                            const parentItem = parentFolder.parentElement;
-                            if (parentItem.classList.contains('folder-collapsed')) {
-                                parentItem.classList.remove('folder-collapsed');
-                                const collapseIcon = parentItem.querySelector('.collapse-icon');
+                        const title = titleElement.textContent.toLowerCase();
+                        const descElement = item.querySelector('.toc-desc');
+                        const desc = descElement ? descElement.textContent.toLowerCase() : '';
+                        
+                        // Reset highlight styling
+                        titleElement.style.backgroundColor = '';
+                        titleElement.style.padding = '';
+                        titleElement.style.borderRadius = '';
+                        
+                        if (searchValue && (title.includes(searchValue) || desc.includes(searchValue))) {
+                            item.style.display = '';
+                            foundItems++;
+                            
+                            // Highlight the matching text in title
+                            if (title.includes(searchValue)) {
+                                titleElement.style.backgroundColor = '#fff3cd';
+                                titleElement.style.padding = '2px 5px';
+                                titleElement.style.borderRadius = '3px';
+                            }
+                            
+                            // Mở thư mục cha nếu là thư mục con
+                            let parentFolder = item.closest('.subfolder');
+                            while (parentFolder) {
+                                const parentItem = parentFolder.parentElement;
+                                if (parentItem.classList.contains('folder-collapsed')) {
+                                    parentItem.classList.remove('folder-collapsed');
+                                    const collapseIcon = parentItem.querySelector('.collapse-icon');
+                                    if (collapseIcon) {
+                                        collapseIcon.textContent = '-';
+                                    }
+                                }
+                                parentFolder = parentItem.closest('.subfolder');
+                            }
+                        } else if (!searchValue) {
+                            // If search is cleared, just show all items
+                            item.style.display = '';
+                        } else {
+                            // Check if any children match
+                            const subfolders = item.querySelectorAll('.subfolder .toc-item');
+                            let hasVisibleChild = false;
+                            
+                            subfolders.forEach(subfolder => {
+                                const subTitle = subfolder.querySelector('.toc-title').textContent.toLowerCase();
+                                const subDesc = subfolder.querySelector('.toc-desc') ? 
+                                    subfolder.querySelector('.toc-desc').textContent.toLowerCase() : '';
+                                
+                                if (subTitle.includes(searchValue) || subDesc.includes(searchValue)) {
+                                    hasVisibleChild = true;
+                                    subfolder.style.display = '';
+                                    foundItems++;
+                                    
+                                    // Highlight the matching text in the child title
+                                    if (subTitle.includes(searchValue)) {
+                                        const subTitleEl = subfolder.querySelector('.toc-title');
+                                        subTitleEl.style.backgroundColor = '#fff3cd';
+                                        subTitleEl.style.padding = '2px 5px';
+                                        subTitleEl.style.borderRadius = '3px';
+                                    }
+                                } else {
+                                    subfolder.style.display = 'none';
+                                }
+                            });
+                            
+                            if (hasVisibleChild) {
+                                item.style.display = '';
+                                item.classList.remove('folder-collapsed');
+                                const collapseIcon = item.querySelector('.collapse-icon');
                                 if (collapseIcon) {
                                     collapseIcon.textContent = '-';
                                 }
-                            }
-                            parentFolder = parentItem.closest('.subfolder');
-                        }
-                    } else {
-                        // Kiểm tra xem có thư mục con nào phù hợp không
-                        const subfolders = item.querySelectorAll('.subfolder .toc-item');
-                        let hasVisibleChild = false;
-                        
-                        subfolders.forEach(subfolder => {
-                            const subTitle = subfolder.querySelector('.toc-title').textContent.toLowerCase();
-                            const subDesc = subfolder.querySelector('.toc-desc') ? 
-                                subfolder.querySelector('.toc-desc').textContent.toLowerCase() : '';
-                            
-                            if (subTitle.includes(searchValue) || subDesc.includes(searchValue)) {
-                                hasVisibleChild = true;
-                                subfolder.style.display = '';
                             } else {
-                                subfolder.style.display = 'none';
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // Update loading bar
+                    loadingBar.style.width = '100%';
+                    setTimeout(() => {
+                        loadingBar.style.opacity = '0';
+                    }, 500);
+                    
+                    // If no search term, collapse all folders
+                    if (!searchValue) {
+                        document.querySelectorAll('.folder-toggle').forEach(toggle => {
+                            const parentItem = toggle.parentElement;
+                            parentItem.classList.add('folder-collapsed');
+                            const collapseIcon = toggle.querySelector('.collapse-icon');
+                            if (collapseIcon) {
+                                collapseIcon.textContent = '+';
                             }
                         });
-                        
-                        if (hasVisibleChild) {
-                            item.style.display = '';
-                            item.classList.remove('folder-collapsed');
-                            const collapseIcon = item.querySelector('.collapse-icon');
-                            if (collapseIcon) {
-                                collapseIcon.textContent = '-';
-                            }
-                        } else {
-                            item.style.display = 'none';
-                        }
                     }
-                });
+                }, 300); // Slight delay to show the loading effect
+            });
+            
+            // Handle link clicks with loading indicator
+            document.addEventListener('click', function(event) {
+                const target = event.target;
+                
+                // Only process links with href
+                if ((target.tagName === 'A' && target.getAttribute('href') && !target.classList.contains('folder-toggle')) || 
+                    target.closest('a:not(.folder-toggle)[href]')) {
+                    
+                    const link = target.tagName === 'A' ? target : target.closest('a');
+                    const href = link.getAttribute('href');
+                    
+                    // Only process non-hash links (external links)
+                    if (href && !href.startsWith('#')) {
+                        // Show loading indicator
+                        loadingBar.style.opacity = '1';
+                        loadingBar.style.width = '50%';
+                        
+                        // Simulate loading
+                        let width = 50;
+                        const loadInterval = setInterval(function() {
+                            if (width >= 80) {
+                                clearInterval(loadInterval);
+                            } else {
+                                width += Math.random() * 5;
+                                loadingBar.style.width = width + '%';
+                            }
+                        }, 100);
+                    }
+                }
             });
         });
     </script>
