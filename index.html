@@ -345,15 +345,14 @@
         }
         
         /* Animation for subfolder opening/closing */
-        .subfolder {
-            max-height: 2000px;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-        }
-        
-        .folder-collapsed .subfolder {
-            max-height: 0;
-        }
+.subfolder {
+    max-height: 9999px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+.folder-collapsed > .subfolder {
+    display: none;
+}
         
         /* Tooltip */
         [data-tooltip] {
@@ -1970,120 +1969,317 @@
                             </ul>
                         </li>
                         
-                        <!-- 03. CATALOGUE -->
-                        <li class="toc-item folder-collapsed">
-                            <a href="#" class="toc-link level-2 folder-toggle">
-                                <div class="toc-icon">📚</div>
-                                <div class="toc-content">
-                                    <div class="toc-title">03. CATALOGUE</div>
-                                </div>
-                                <span class="collapse-icon">+</span>
-                            </a>
-                            <ul class="toc-list subfolder">
-                                <!-- 01. VẬT LIỆU -->
-                                <li class="toc-item">
-                                    <div class="toc-link level-3">
-                                        <div class="toc-icon">📂</div>
-                                        <div class="toc-content">
-                                            <div class="toc-title catalogue-title">01. VẬT LIỆU</div>
-                                            
-                                            <a href="https://catalogue.ancuong.com/innovative-mfc-mdf-melamine-panels/" target="_blank" class="catalogue-link">01. CATALOGUE INNOVATIVE MFC & MDF MELAMINE PANELS</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/high-gloss-acrylic-panel/" target="_blank" class="catalogue-link">02. CATALOGUE HIGH GLOSS ACRYLIC PANEL</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/laminate-kingdom-high-pressure-laminate/" target="_blank" class="catalogue-link">03. CATALOGUE LAMINATE KINGDOM - HIGH PRESSURE LAMINATE</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/laminate-kingdom-trend-collection/" target="_blank" class="catalogue-link">04. CATALOGUE LAMINATE KINGDOM TREND COLLECTION</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/laminate-flooring/" target="_blank" class="catalogue-link">05. CATALOGUE LAMINATE FLOORING</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/fireproof-board/" target="_blank" class="catalogue-link">06. CATALOGUE FIREPROOF BOARD</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/veneer/" target="_blank" class="catalogue-link">07. CATALOGUE VENEER</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/arilux-plus/" target="_blank" class="catalogue-link">08. CATALOGUE STANDARD - ACRYLIC BASIC</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/kingdom-basic/" target="_blank" class="catalogue-link">09. CATALOGUE KINGDOM BASIC</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/53121999/" target="_blank" class="catalogue-link">10. CATALOGUE ECO-VENEER - REALISTIC & MORE</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                                <!-- 02. GIẢI PHÁP -->
-                                <li class="toc-item">
-                                    <div class="toc-link level-3">
-                                        <div class="toc-icon">📂</div>
-                                        <div class="toc-content">
-                                            <div class="toc-title catalogue-title">02. GIẢI PHÁP</div>
-                                            
-                                            <a href="https://catalogue.ancuong.com/wpb-pvc-foil-waterproof-board/" target="_blank" class="catalogue-link">01. CATALOGUE WPB® PVC FOIL - WATERPROOF BOARD CATALOGUE</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/decorative-wall-panels/" target="_blank" class="catalogue-link">02. CATALOGUE DECORATIVE WALL PANELS</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/decorative-wallpaper/" target="_blank" class="catalogue-link">03. CATALOGUE DECORATIVE WALLPAPER</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/636264482/" target="_blank" class="catalogue-link">04. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 6</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/209526489/" target="_blank" class="catalogue-link">05. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 5</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/536481320/" target="_blank" class="catalogue-link">06. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 4</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/536726489/" target="_blank" class="catalogue-link">07. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 3</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/535941343/" target="_blank" class="catalogue-link">08. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 2</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/536218920/" target="_blank" class="catalogue-link">09. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 1</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/121882056/" target="_blank" class="catalogue-link">10. SYNCHRONIZED COLLECTION BY AN CƯỜNG</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                                <!-- 03. ỨNG DỤNG NỘI THẤT -->
-                                <li class="toc-item">
-                                    <div class="toc-link level-3">
-                                        <div class="toc-icon">📂</div>
-                                        <div class="toc-content">
-                                            <div class="toc-title catalogue-title">03. ỨNG DỤNG NỘI THẤT</div>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/52921482/" target="_blank" class="catalogue-link">01. CATALOGUE MẪU THIẾT KẾ PHÒNG KHÁCH</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/53015383/" target="_blank" class="catalogue-link">02. CATALOGUE MẪU THIẾT KẾ PHÒNG NGỦ</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/52433263/" target="_blank" class="catalogue-link">03. CATALOGUE MẪU THIẾT KẾ BẾP</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/53121999/" target="_blank" class="catalogue-link">04. CATALOGUE HÌNH ẢNH ỨNG DỤNG - ECO VENEER</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/53243504/" target="_blank" class="catalogue-link">05. CATALOGUE LAMINATE FLOORING COLLECTION - ỨNG DỤNG VÁN SÀN</a>
-                                            
-                                            <a href="https://catalogue.ancuong.com/materials-for-shipbuilding/" target="_blank" class="catalogue-link">06. CATALOGUE MATERIALS FOR SHIPBUILDING</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                                <!-- 04. PHỤ KIỆN & SẢN PHẨM KHÁC -->
-                                <li class="toc-item">
-                                    <div class="toc-link level-3">
-                                        <div class="toc-icon">📂</div>
-                                        <div class="toc-content">
-                                            <div class="toc-title catalogue-title">04. PHỤ KIỆN & SẢN PHẨM KHÁC</div>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/618713891/" target="_blank" class="catalogue-link">01. HETTICH CATALOGUE</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/417281817/" target="_blank" class="catalogue-link">02. IMUNDEX CATALOGUE</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/354425868/" target="_blank" class="catalogue-link">03. SCHNEIDER ELECTRIC</a>
-                                            
-                                            <a href="https://catalogues.ancuong.com/view/76728738/" target="_blank" class="catalogue-link">04. DOOR CATALOGUE - CATALOGUE CỬA</a>
+<!-- 03. CATALOGUE -->
+<li class="toc-item folder-collapsed">
+    <a href="#" class="toc-link level-2 folder-toggle">
+        <div class="toc-icon">📚</div>
+        <div class="toc-content">
+            <div class="toc-title">03. CATALOGUE</div>
+        </div>
+        <span class="collapse-icon">+</span>
+    </a>
+    <ul class="toc-list subfolder">
+        <!-- 01. VẬT LIỆU -->
+        <li class="toc-item folder-collapsed">
+            <a href="#" class="toc-link level-3 folder-toggle">
+                <div class="toc-icon">📂</div>
+                <div class="toc-content">
+                    <div class="toc-title">01. VẬT LIỆU</div>
+                </div>
+                <span class="collapse-icon">+</span>
+            </a>
+            <ul class="toc-list subfolder">
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/innovative-mfc-mdf-melamine-panels/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">01. CATALOGUE INNOVATIVE MFC & MDF MELAMINE PANELS</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/high-gloss-acrylic-panel/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">02. CATALOGUE HIGH GLOSS ACRYLIC PANEL</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/laminate-kingdom-high-pressure-laminate/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">03. CATALOGUE LAMINATE KINGDOM - HIGH PRESSURE LAMINATE</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/laminate-kingdom-trend-collection/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">04. CATALOGUE LAMINATE KINGDOM TREND COLLECTION</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/laminate-flooring/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">05. CATALOGUE LAMINATE FLOORING</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/fireproof-board/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">06. CATALOGUE FIREPROOF BOARD</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/veneer/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">07. CATALOGUE VENEER</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/arilux-plus/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">08. CATALOGUE STANDARD - ACRYLIC BASIC</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/kingdom-basic/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">09. CATALOGUE KINGDOM BASIC</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/53121999/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">10. CATALOGUE ECO-VENEER - REALISTIC & MORE</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
-                                            <a href="https://catalogue.ancuong.com/pvc-abs-edges/" target="_blank" class="catalogue-link">05. PVC / ABS EDGES</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        
+        <!-- 02. GIẢI PHÁP -->
+        <li class="toc-item folder-collapsed">
+            <a href="#" class="toc-link level-3 folder-toggle">
+                <div class="toc-icon">📂</div>
+                <div class="toc-content">
+                    <div class="toc-title">02. GIẢI PHÁP</div>
+                </div>
+                <span class="collapse-icon">+</span>
+            </a>
+            <ul class="toc-list subfolder">
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/wpb-pvc-foil-waterproof-board/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">01. CATALOGUE WPB® PVC FOIL - WATERPROOF BOARD CATALOGUE</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/decorative-wall-panels/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">02. CATALOGUE DECORATIVE WALL PANELS</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/decorative-wallpaper/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">03. CATALOGUE DECORATIVE WALLPAPER</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/636264482/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">04. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 6</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/209526489/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">05. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 5</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/536481320/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">06. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 4</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/536726489/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">07. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 3</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/535941343/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">08. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 2</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/536218920/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">09. BỘ SƯU TẬP MFC-LK ĐỒNG MÀU SỐ 1</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/121882056/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">10. SYNCHRONIZED COLLECTION BY AN CƯỜNG</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- 03. ỨNG DỤNG NỘI THẤT -->
+        <li class="toc-item folder-collapsed">
+            <a href="#" class="toc-link level-3 folder-toggle">
+                <div class="toc-icon">📂</div>
+                <div class="toc-content">
+                    <div class="toc-title">03. ỨNG DỤNG NỘI THẤT</div>
+                </div>
+                <span class="collapse-icon">+</span>
+            </a>
+            <ul class="toc-list subfolder">
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/52921482/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">01. CATALOGUE MẪU THIẾT KẾ PHÒNG KHÁCH</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/53015383/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">02. CATALOGUE MẪU THIẾT KẾ PHÒNG NGỦ</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/52433263/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">03. CATALOGUE MẪU THIẾT KẾ BẾP</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/53121999/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">04. CATALOGUE HÌNH ẢNH ỨNG DỤNG - ECO VENEER</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/53243504/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">05. CATALOGUE LAMINATE FLOORING COLLECTION - ỨNG DỤNG VÁN SÀN</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/materials-for-shipbuilding/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">06. CATALOGUE MATERIALS FOR SHIPBUILDING</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- 04. PHỤ KIỆN & SẢN PHẨM KHÁC -->
+        <li class="toc-item folder-collapsed">
+            <a href="#" class="toc-link level-3 folder-toggle">
+                <div class="toc-icon">📂</div>
+                <div class="toc-content">
+                    <div class="toc-title">04. PHỤ KIỆN & SẢN PHẨM KHÁC</div>
+                </div>
+                <span class="collapse-icon">+</span>
+            </a>
+            <ul class="toc-list subfolder">
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/618713891/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">01. HETTICH CATALOGUE</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/417281817/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">02. IMUNDEX CATALOGUE</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/354425868/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">03. SCHNEIDER ELECTRIC</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogues.ancuong.com/view/76728738/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">04. DOOR CATALOGUE - CATALOGUE CỬA</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="https://catalogue.ancuong.com/pvc-abs-edges/" target="_blank" class="toc-link level-4">
+                        <div class="toc-icon">📄</div>
+                        <div class="toc-content">
+                            <div class="toc-title">05. PVC / ABS EDGES</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
                         <!-- 04. COPORATE BRANDING -->
                         <li class="toc-item folder-collapsed">
                             <a href="#" class="toc-link level-2 folder-toggle">
