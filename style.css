@@ -39,7 +39,7 @@ body[data-theme="light"] {
     --text-muted: #64748b;
     --highlight-color: #b89778;
     --highlight-border: rgba(184, 151, 120, 0.5);
-    --hover-text-color: #f5e050; /* Soft gold, matching dark mode */
+    --hover-text-color: #f5e050; /* Soft gold, used in dark mode only */
     background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
 }
 
@@ -129,27 +129,37 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     padding: 8px 16px 8px 4px; /* Reduced left padding */
-    border-radius: 12px;
+    border-radius: 14px;
     transition: var(--transition-fast);
     box-sizing: border-box;
 }
 
 .nav-link:hover, .nav-link:focus {
     background: var(--primary-light); /* Blue background */
-    color: var(--hover-text-color); /* Soft gold */
-    border-radius: 12px; /* Stay within border */
+    color: var(--text-color); /* Black in light mode */
+    border-radius: 14px; /* Sync with container */
+    margin: 1px; /* Prevent border outline */
+    box-sizing: content-box;
     outline: none;
 }
 
 .nav-link.active {
     background: rgba(30, 64, 175, 0.3); /* Stronger blue in light mode */
-    color: var(--hover-text-color); /* Soft gold */
-    border-radius: 12px; /* Stay within border */
+    color: var(--text-color); /* Black in light mode */
+    border-radius: 14px; /* Sync with container */
+    margin: 1px; /* Prevent border outline */
+    box-sizing: content-box;
     font-weight: 600;
+}
+
+body[data-theme="dark"] .nav-link:hover,
+body[data-theme="dark"] .nav-link:focus {
+    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 body[data-theme="dark"] .nav-link.active {
     background: rgba(59, 130, 246, 0.3); /* Stronger blue in dark mode */
+    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 .theme-toggle {
@@ -270,30 +280,41 @@ body[data-theme="dark"] .nav-link.active {
     color: var(--text-color);
     transition: var(--transition-fast);
     align-items: center;
-    border-radius: 12px;
+    border-radius: 14px;
     box-sizing: border-box;
 }
 
 .toc-link:hover, .toc-link:focus {
     background: var(--primary-light); /* Blue background */
-    color: var(--hover-text-color); /* Soft gold */
-    border-radius: 12px; /* Stay within border */
+    color: var(--text-color); /* Black in light mode */
+    border-radius: 14px; /* Sync with container */
+    margin: 1px; /* Prevent border outline */
+    box-sizing: content-box;
     outline: none;
 }
 
 .toc-link.folder-toggle:hover {
     background: var(--glass-bg); /* Keep folder toggle distinct */
+    margin: 0; /* Reset for folder toggle */
 }
 
 .toc-link.active {
     background: rgba(30, 64, 175, 0.3); /* Stronger blue in light mode */
-    color: var(--hover-text-color); /* Soft gold */
-    border-radius: 12px; /* Stay within border */
+    color: var(--text-color); /* Black in light mode */
+    border-radius: 14px; /* Sync with container */
+    margin: 1px; /* Prevent border outline */
+    box-sizing: content-box;
     font-weight: 600;
+}
+
+body[data-theme="dark"] .toc-link:hover,
+body[data-theme="dark"] .toc-link:focus {
+    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 body[data-theme="dark"] .toc-link.active {
     background: rgba(59, 130, 246, 0.3); /* Stronger blue in dark mode */
+    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 .toc-icon {
@@ -317,7 +338,12 @@ body[data-theme="dark"] .toc-link.active {
 }
 
 .toc-link:hover .toc-title, .toc-link:focus .toc-title {
-    color: var(--hover-text-color);
+    color: var(--text-color); /* Black in light mode */
+}
+
+body[data-theme="dark"] .toc-link:hover .toc-title,
+body[data-theme="dark"] .toc-link:focus .toc-title {
+    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 .toc-content {
@@ -418,7 +444,11 @@ body[data-theme="dark"] .toc-link.active {
     outline: none;
     box-shadow: 0 0 0 3px var(--primary-light);
     background: var(--glass-bg);
-    color: var(--hover-text-color);
+    color: var(--text-color); /* Black in light mode */
+}
+
+body[data-theme="dark"] .search-box input:focus {
+    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 .search-box .search-icon {
@@ -484,10 +514,15 @@ body[data-theme="dark"] .toc-link.active {
 
 .department-badge:hover, .department-badge:focus {
     background: var(--primary-light);
-    color: var(--hover-text-color);
+    color: var(--text-color); /* Black in light mode */
     transform: scale(1.05);
     box-shadow: var(--shadow-md);
     outline: none;
+}
+
+body[data-theme="dark"] .department-badge:hover,
+body[data-theme="dark"] .department-badge:focus {
+    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 .ripple {
@@ -577,10 +612,15 @@ body[data-theme="light"] [data-tooltip]::after {
 
 .back-to-top:hover, .back-to-top:focus {
     background: var(--primary-light);
-    color: var(--hover-text-color);
+    color: var(--text-color); /* Black in light mode */
     transform: scale(1.1);
     box-shadow: var(--shadow-md);
     outline: none;
+}
+
+body[data-theme="dark"] .back-to-top:hover,
+body[data-theme="dark"] .back-to-top:focus {
+    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 .back-to-top i {
