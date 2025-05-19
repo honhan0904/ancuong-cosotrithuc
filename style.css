@@ -228,6 +228,12 @@ body[data-theme="dark"] .nav-link.active {
     }
 }
 
+@keyframes dockBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1.1); }
+}
+
 .toc {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -262,14 +268,11 @@ body[data-theme="dark"] .nav-link.active {
 .toc-item {
     border-bottom: 1px solid var(--border-color);
     transition: var(--transition-fast);
+    overflow: hidden; /* Contain animation */
 }
 
 .toc-item:last-child {
     border-bottom: none;
-}
-
-.toc-item:hover {
-    background: transparent; /* Remove hover effect */
 }
 
 .toc-link {
@@ -277,10 +280,16 @@ body[data-theme="dark"] .nav-link.active {
     padding: 12px 16px 12px 2px; /* Reduced left padding to 2px */
     text-decoration: none;
     color: var(--text-color);
-    transition: var(--transition-fast);
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     align-items: center;
     border-radius: 0; /* Remove rounding */
     box-sizing: border-box;
+    will-change: transform; /* Optimize animation */
+    transform-origin: center; /* Scale from center */
+}
+
+.toc-link:hover {
+    animation: dockBounce 0.3s ease-out forwards;
 }
 
 .toc-icon {
