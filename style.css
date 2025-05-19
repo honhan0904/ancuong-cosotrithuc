@@ -135,17 +135,17 @@ body {
 }
 
 .nav-link:hover, .nav-link:focus {
-    background: rgba(59, 130, 246, 0.3); /* Slightly lighter for subtlety */
+    background: rgba(59, 130, 246, 0.3); /* Subtle blue tint */
+    border-bottom: 2px solid var(--primary-color); /* Highlight border */
     color: var(--hover-text-color);
-    transform: scale(1.02);
     outline: none;
 }
 
 .nav-link.active {
-    background: var(--primary-light);
+    background: var(--primary-light); /* Slightly stronger background */
+    border-bottom: 2px solid var(--primary-color); /* Consistent with hover */
     color: var(--hover-text-color);
     font-weight: 600;
-    box-shadow: inset 0 0 4px var(--primary-light);
 }
 
 .theme-toggle {
@@ -271,23 +271,21 @@ body {
 }
 
 .toc-link:hover, .toc-link:focus {
-    background: var(--primary-light);
+    background: rgba(59, 130, 246, 0.3); /* Subtle blue tint */
+    border-left: 2px solid var(--primary-color); /* Highlight border */
     color: var(--hover-text-color);
-    transform: scale(1.01); /* Reduced for subtle effect */
-    box-shadow: var(--shadow-sm);
     outline: none;
 }
 
 .toc-link.folder-toggle:hover {
-    background: var(--glass-bg);
+    background: var(--glass-bg); /* Keep folder toggle distinct */
 }
 
 .toc-link.active {
-    background: var(--primary-light);
-    border-left: 2px solid var(--primary-color); /* Thinner border */
+    background: var(--primary-light); /* Slightly stronger background */
+    border-left: 2px solid var(--primary-color); /* Consistent with hover */
     color: var(--hover-text-color);
     font-weight: 600;
-    box-shadow: inset 0 0 4px var(--primary-light); /* Subtler shadow */
 }
 
 .toc-icon {
