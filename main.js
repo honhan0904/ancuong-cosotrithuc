@@ -1,4 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Security: Disable developer tools
+  document.addEventListener('keydown', (e) => {
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
+      (e.ctrlKey && e.key === 'U')
+    ) {
+      e.preventDefault();
+      alert('Access to developer tools is restricted.');
+    }
+  });
+
+  // Security: Disable right-click
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    alert('Right-click is disabled for security reasons.');
+  });
+
+  // Security: Console warning and disable logging
+  console.log('%cWARNING: Using the console may expose sensitive data. Proceed at your own risk.', 'color: red; font-size: 16px;');
+  console.log = console.warn = console.error = () => {};
+
+  // Security: Anti-debugging (basic)
+  (function antiDebug() {
+    const start = performance.now();
+    debugger; // Pauses if dev tools are open
+    if (performance.now() - start > 100) {
+      alert('Debugging detected. This action is not allowed.');
+      window.location.reload();
+    }
+    setTimeout(antiDebug, 1000);
+  })();
+
+  // Security: Disable text selection and copying
+  document.body.style.userSelect = 'none';
+  document.body.style.webkitUserSelect = 'none';
+  document.body.style.msUserSelect = 'none';
+  document.addEventListener('copy', (e) => {
+    e.preventDefault();
+    alert('Copying content is disabled.');
+  });
+
   // Theme toggle functionality
   const body = document.body;
   const themeToggle = document.querySelector('.theme-toggle') || document.createElement('div');
@@ -54,7 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const tocList = document.querySelector('.toc-list');
   async function fetchAndRenderTOC() {
     try {
-      const response = await fetch('./toc.json'); // Update to GitHub Pages URL after deployment
+      // Security: Basic token check (placeholder; requires server-side validation)
+      const token = localStorage.getItem('authToken') || 'placeholder-token';
+      const response = await fetch('./toc.json', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (!response.ok) throw new Error('Unauthorized access to TOC');
       const tocItems = await response.json();
       tocList.innerHTML = renderTocItems(tocItems, 1);
       attachTocEventListeners();
@@ -85,10 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function attachTocEventListeners() {
-    // Folder toggle handling
-    const folderToggles = document.querySelectorAll('.folder-toggle');
-    folderToggles.forEach(toggle => {
-      toggle.addEventListener('click', (e) => {
+    // Event delegation for folder toggles
+    tocList.addEventListener('click', (e) => {
+      const toggle = e.target.closest('.folder-toggle');
+      if (toggle) {
         e.preventDefault();
         const parentItem = toggle.parentElement;
         const subfolder = parentItem.querySelector('.subfolder');
@@ -110,37 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
           }
         }
-      });
-    });
-
-    // View All button handling (placeholder for future use)
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('view-all-btn')) {
-        e.preventDefault();
-        const parentItem = e.target.closest('.toc-item');
-        expandAllSubfolders(parentItem);
       }
     });
 
-    function expandAllSubfolders(item) {
-      const subfolder = item.querySelector('.subfolder');
-      if (subfolder) {
-        subfolder.style.display = 'block';
-        subfolder.style.animation = 'expandIn 0.3s ease forwards';
-        const subItems = subfolder.querySelectorAll('.toc-item.folder-collapsed');
-        subItems.forEach(subItem => {
-          subItem.classList.remove('folder-collapsed');
-          const subCollapseIcon = subItem.querySelector('.collapse-icon');
-          const subToggle = subItem.querySelector('.folder-toggle');
-          if (subCollapseIcon) subCollapseIcon.textContent = '−';
-          if (subToggle) subToggle.setAttribute('aria-expanded', 'true');
-          expandAllSubfolders(subItem);
-        });
-      }
-    }
-
-    // Ripple effect
-    document.addEventListener('click', (e) => {
+    // Ripple effect for links
+    tocList.addEventListener('click', (e) => {
       const link = e.target.closest('.toc-link');
       if (link) {
         const ripple = document.createElement('div');
@@ -154,20 +175,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Highlight active item
-    const tocLinks = document.querySelectorAll('.toc-link');
-    tocLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (!link.classList.contains('folder-toggle')) {
-          tocLinks.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        }
-      });
+    tocList.addEventListener('click', (e) => {
+      const link = e.target.closest('.toc-link:not(.folder-toggle)');
+      if (link) {
+        document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
     });
 
-    // Department badge click handling (placeholder for future use)
-    const departmentBadges = document.querySelectorAll('.department-badge');
-    departmentBadges.forEach(badge => {
-      badge.addEventListener('click', () => {
+    // Department badge click handling
+    document.addEventListener('click', (e) => {
+      const badge = e.target.closest('.department-badge');
+      if (badge) {
         const departmentName = badge.textContent.trim();
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
@@ -177,10 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
           badge.style.transform = 'scale(1.1)';
           setTimeout(() => badge.style.transform = '', 200);
         }
-      });
+      }
     });
 
-    // Enhanced search functionality with debouncing
+    // Enhanced search functionality with sanitization
     const searchInput = document.getElementById('search-input');
     const noResults = document.getElementById('no-results');
     if (searchInput) {
@@ -188,7 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
       searchInput.addEventListener('input', () => {
         clearTimeout(debounceTimeout);
         debounceTimeout = setTimeout(() => {
-          const searchValue = searchInput.value.toLowerCase().trim();
+          // Security: Sanitize input
+          const searchValue = sanitizeInput(searchInput.value).toLowerCase().trim();
           const allItems = document.querySelectorAll('.toc-item');
           let foundItems = 0;
 
@@ -212,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
               const descEl = item.querySelector('.toc-desc');
               let matches = false;
 
-              // Check if the current item matches
               if (titleEl && titleEl.textContent.toLowerCase().includes(searchValue)) {
                 matches = true;
               }
@@ -220,7 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 matches = true;
               }
 
-              // Check if any child items match
               const childItems = item.querySelectorAll('.toc-item');
               const hasChildMatch = Array.from(childItems).some(child => {
                 const childTitle = child.querySelector('.toc-title');
@@ -232,7 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
               if (matches || hasChildMatch) {
                 item.style.display = '';
                 foundItems++;
-                // Expand parent folders
                 let parent = item.closest('.subfolder');
                 while (parent) {
                   const parentItem = parent.parentElement;
@@ -250,19 +267,16 @@ document.addEventListener('DOMContentLoaded', () => {
               }
             });
 
-            // Animate visible items
             const visibleItems = document.querySelectorAll('.toc-item:not([style*="display: none"])');
             visibleItems.forEach((item, index) => {
               item.style.animation = `fadeSlideIn 0.3s ease forwards ${index * 0.05}s`;
             });
 
-            // Show "No results" if no matches
             if (noResults) {
               noResults.style.display = foundItems ? 'none' : 'block';
             }
           } else {
-            // Reset to collapsed state when search is cleared
-            folderToggles.forEach(toggle => {
+            document.querySelectorAll('.folder-toggle').forEach(toggle => {
               const parentItem = toggle.parentElement;
               parentItem.classList.add('folder-collapsed');
               const collapseIcon = toggle.querySelector('.collapse-icon');
@@ -305,12 +319,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Minimal security measures
-    document.addEventListener('contextmenu', (e) => {
-      if (e.target.closest('.toc-link, .search-box, .theme-toggle, .back-to-top')) {
-        e.preventDefault();
-      }
-    });
+    // Security: Simple input sanitization
+    function sanitizeInput(input) {
+      const div = document.createElement('div');
+      div.textContent = input;
+      return div.innerHTML;
+    }
   }
 
   // Initialize TOC

@@ -131,12 +131,13 @@ body {
     padding: 8px 16px;
     border-radius: 12px;
     transition: var(--transition-fast);
+    box-sizing: border-box;
 }
 
 .nav-link:hover, .nav-link:focus {
-    background: var(--primary-light);
+    background: rgba(59, 130, 246, 0.3); /* Slightly lighter for subtlety */
     color: var(--hover-text-color);
-    transform: scale(1.05);
+    transform: scale(1.02);
     outline: none;
 }
 
@@ -144,7 +145,7 @@ body {
     background: var(--primary-light);
     color: var(--hover-text-color);
     font-weight: 600;
-    box-shadow: inset 0 0 8px var(--primary-light);
+    box-shadow: inset 0 0 4px var(--primary-light);
 }
 
 .theme-toggle {
@@ -266,12 +267,13 @@ body {
     transition: var(--transition-fast);
     align-items: center;
     border-radius: 12px;
+    box-sizing: border-box;
 }
 
 .toc-link:hover, .toc-link:focus {
     background: var(--primary-light);
     color: var(--hover-text-color);
-    transform: scale(1.02);
+    transform: scale(1.01); /* Reduced for subtle effect */
     box-shadow: var(--shadow-sm);
     outline: none;
 }
@@ -282,10 +284,10 @@ body {
 
 .toc-link.active {
     background: var(--primary-light);
-    border-left: 4px solid var(--primary-color);
+    border-left: 2px solid var(--primary-color); /* Thinner border */
     color: var(--hover-text-color);
     font-weight: 600;
-    box-shadow: inset 0 0 8px var(--primary-light);
+    box-shadow: inset 0 0 4px var(--primary-light); /* Subtler shadow */
 }
 
 .toc-icon {
