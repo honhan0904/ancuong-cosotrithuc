@@ -19,7 +19,7 @@
     --danger-color: #ef4444;
     --highlight-color: #f5e050; /* Match secondary for consistency */
     --highlight-border: rgba(245, 224, 80, 0.5);
-    --hover-text-color: #f5e050; /* Soft gold for hover/active (dark mode) */
+    --hover-text-color: #f5e050; /* Soft gold for hover/active */
     --transition-normal: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     --transition-fast: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -39,7 +39,7 @@ body[data-theme="light"] {
     --text-muted: #64748b;
     --highlight-color: #b89778;
     --highlight-border: rgba(184, 151, 120, 0.5);
-    --hover-text-color: #f5e050; /* Match dark mode's soft gold */
+    --hover-text-color: #f5e050; /* Soft gold, matching dark mode */
     background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
 }
 
@@ -128,26 +128,28 @@ body {
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
-    padding: 8px 16px 8px 8px; /* Reduced left padding */
+    padding: 8px 16px 8px 4px; /* Reduced left padding */
     border-radius: 12px;
     transition: var(--transition-fast);
     box-sizing: border-box;
 }
 
 .nav-link:hover, .nav-link:focus {
-    background: rgba(59, 130, 246, 0.3); /* Subtle blue tint */
-    border-bottom: 2px solid var(--primary-color); /* Highlight border */
-    border-radius: 12px; /* Rounded corners */
-    color: var(--hover-text-color);
+    background: var(--primary-light); /* Blue background */
+    color: var(--hover-text-color); /* Soft gold */
+    border-radius: 12px; /* Stay within border */
     outline: none;
 }
 
 .nav-link.active {
-    background: var(--primary-light); /* Slightly stronger background */
-    border-bottom: 2px solid var(--primary-color); /* Consistent with hover */
-    border-radius: 12px; /* Rounded corners */
-    color: var(--hover-text-color);
+    background: rgba(30, 64, 175, 0.3); /* Stronger blue in light mode */
+    color: var(--hover-text-color); /* Soft gold */
+    border-radius: 12px; /* Stay within border */
     font-weight: 600;
+}
+
+body[data-theme="dark"] .nav-link.active {
+    background: rgba(59, 130, 246, 0.3); /* Stronger blue in dark mode */
 }
 
 .theme-toggle {
@@ -263,7 +265,7 @@ body {
 
 .toc-link {
     display: flex;
-    padding: 12px 16px 12px 8px; /* Reduced left padding */
+    padding: 12px 16px 12px 4px; /* Reduced left padding */
     text-decoration: none;
     color: var(--text-color);
     transition: var(--transition-fast);
@@ -273,27 +275,25 @@ body {
 }
 
 .toc-link:hover, .toc-link:focus {
-    background: rgba(59, 130, 246, 0.3); /* Subtle blue tint */
-    border-left: 2px solid var(--primary-color); /* Highlight border */
-    border-radius: 12px; /* Rounded corners */
-    color: var(--hover-text-color);
-    padding-left: 6px; /* Adjust for border */
+    background: var(--primary-light); /* Blue background */
+    color: var(--hover-text-color); /* Soft gold */
+    border-radius: 12px; /* Stay within border */
     outline: none;
 }
 
 .toc-link.folder-toggle:hover {
     background: var(--glass-bg); /* Keep folder toggle distinct */
-    border-left: none; /* No border for folder toggle */
-    padding-left: 8px; /* Reset padding */
 }
 
 .toc-link.active {
-    background: var(--primary-light); /* Slightly stronger background */
-    border-left: 2px solid var(--primary-color); /* Consistent with hover */
-    border-radius: 12px; /* Rounded corners */
-    color: var(--hover-text-color);
+    background: rgba(30, 64, 175, 0.3); /* Stronger blue in light mode */
+    color: var(--hover-text-color); /* Soft gold */
+    border-radius: 12px; /* Stay within border */
     font-weight: 600;
-    padding-left: 6px; /* Adjust for border */
+}
+
+body[data-theme="dark"] .toc-link.active {
+    background: rgba(59, 130, 246, 0.3); /* Stronger blue in dark mode */
 }
 
 .toc-icon {
@@ -594,10 +594,7 @@ body[data-theme="light"] [data-tooltip]::after {
         padding: 16px;
     }
     .toc-link {
-        padding: 10px 12px 10px 8px; /* Maintain reduced left padding */
-    }
-    .toc-link:hover, .toc-link:focus, .toc-link.active {
-        padding-left: 6px; /* Consistent with desktop */
+        padding: 10px 12px 10px 4px; /* Maintain reduced left padding */
     }
     .department-list {
         margin-left: 16px;
