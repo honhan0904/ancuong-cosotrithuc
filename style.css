@@ -98,7 +98,7 @@ body {
 .theme-toggle {
     position: fixed;
     bottom: 32px;
-    right: 32px; /* Replaced back-to-top position */
+    right: 32px; /* Floating at bottom-right corner */
     background: var(--acrylic-bg);
     backdrop-filter: var(--acrylic-blur);
     border: 1px solid var(--border-light);
@@ -110,14 +110,14 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: var(--transition-fast);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md); /* Elevated shadow for floating effect */
     z-index: 100;
 }
 
 .theme-toggle:hover {
     background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.15);
-    box-shadow: 0 0 12px var(--primary-color);
+    transform: scale(1.2) rotate(5deg); /* Enhanced scale and rotation for floating feel */
+    box-shadow: 0 0 15px var(--primary-color), var(--shadow-lg); /* Stronger glow */
 }
 
 .theme-toggle .theme-icon {
