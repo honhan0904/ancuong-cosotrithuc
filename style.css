@@ -228,12 +228,6 @@ body[data-theme="dark"] .nav-link.active {
     }
 }
 
-@keyframes dockBounce {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1.1); }
-}
-
 .toc {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -268,7 +262,6 @@ body[data-theme="dark"] .nav-link.active {
 .toc-item {
     border-bottom: 1px solid var(--border-color);
     transition: var(--transition-fast);
-    overflow: hidden; /* Contain animation */
 }
 
 .toc-item:last-child {
@@ -280,16 +273,16 @@ body[data-theme="dark"] .nav-link.active {
     padding: 12px 16px 12px 2px; /* Reduced left padding to 2px */
     text-decoration: none;
     color: var(--text-color);
-    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
     align-items: center;
     border-radius: 0; /* Remove rounding */
     box-sizing: border-box;
-    will-change: transform; /* Optimize animation */
-    transform-origin: center; /* Scale from center */
+    opacity: 0.9; /* Subtle fade for animation */
 }
 
 .toc-link:hover {
-    animation: dockBounce 0.3s ease-out forwards;
+    transform: translateX(4px);
+    opacity: 1;
 }
 
 .toc-icon {
@@ -303,11 +296,29 @@ body[data-theme="dark"] .nav-link.active {
 
 .toc-content {
     flex: 1;
+    position: relative; /* For underline positioning */
 }
 
 .toc-title {
     font-weight: 600;
     font-size: 1rem;
+    position: relative;
+    display: inline-block; /* For underline width */
+}
+
+.toc-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.toc-link:hover .toc-title::after {
+    width: 100%;
 }
 
 .toc-desc {
