@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Theme toggle functionality
+    const body = document.body;
+    const themeToggle = document.createElement('div');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.innerHTML = '<span class="theme-icon">☀️</span>';
+    document.querySelector('.header').appendChild(themeToggle);
+
+    // Load saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', savedTheme);
+    themeToggle.querySelector('.theme-icon').textContent = savedTheme === 'light' ? '☀️' : '🌙';
+
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        this.querySelector('.theme-icon').textContent = newTheme === 'light' ? '☀️' : '🌙';
+    });
+
     // Simulate page loading
     const loadingBar = document.getElementById('loading-bar');
     let width = 0;
@@ -43,36 +63,32 @@ document.addEventListener('DOMContentLoaded', function() {
             const subfolder = parentItem.querySelector('.subfolder');
             const collapseIcon = this.querySelector('.collapse-icon');
             
-            // Chỉ áp dụng animation khi không trong trạng thái search
             const isSearching = document.body.classList.contains('is-searching');
             
             if (parentItem.classList.contains('folder-collapsed')) {
-                // Opening
                 parentItem.classList.remove('folder-collapsed');
                 collapseIcon.textContent = '-';
                 collapseIcon.style.transform = 'rotate(180deg)';
                 
                 if (subfolder && !isSearching) {
                     subfolder.style.display = 'block';
-                    subfolder.style.animation = 'expandIn 0.3s ease forwards';
+                    subfolder.style.animation = 'expandIn 0.4s ease forwards';
                 }
             } else {
-                // Closing
                 parentItem.classList.add('folder-collapsed');
                 collapseIcon.textContent = '+';
                 collapseIcon.style.transform = 'rotate(0deg)';
                 
                 if (subfolder && !isSearching) {
-                    subfolder.style.animation = 'collapseOut 0.3s ease forwards';
+                    subfolder.style.animation = 'collapseOut 0.4s ease forwards';
                     setTimeout(() => {
                         if (parentItem.classList.contains('folder-collapsed')) {
                             subfolder.style.display = 'none';
                         }
-                    }, 300);
+                    }, 400);
                 }
             }
             
-            // Add pulse animation to the icon
             this.querySelector('.toc-icon').style.animation = 'iconPulse 0.5s ease';
         });
     });
@@ -139,19 +155,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const allItems = document.querySelectorAll('.toc-item, .catalogue-section');
         let foundItems = 0;
         
-        // Thêm class để đánh dấu đang trong trạng thái search
         document.body.classList.toggle('is-searching', searchValue !== '');
         
         setTimeout(() => {
-            // Reset all highlights and displays
             document.querySelectorAll('.toc-title, .toc-desc, .catalogue-link, .catalogue-title, .showroom-link').forEach(el => {
-                el.style.backgroundColor = '';
+                el.style.backgroundColor = ''; // Remove highlight
                 el.style.padding = '';
                 el.style.borderRadius = '';
                 el.style.animation = '';
             });
 
-            // Helper function to check if an element matches search
             function checkElementMatch(element) {
                 const titleEl = element.querySelector('.toc-title, .catalogue-title');
                 const descEl = element.querySelector('.toc-desc');
@@ -160,24 +173,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 let matches = false;
                 
                 if (searchValue && titleEl && titleEl.textContent.toLowerCase().includes(searchValue)) {
-                    titleEl.style.backgroundColor = '#fff3cd';
-                    titleEl.style.padding = '2px 5px';
-                    titleEl.style.borderRadius = '3px';
                     matches = true;
                 }
                 
                 if (searchValue && descEl && descEl.textContent.toLowerCase().includes(searchValue)) {
-                    descEl.style.backgroundColor = '#fff3cd';
-                    descEl.style.padding = '2px 5px';
-                    descEl.style.borderRadius = '3px';
                     matches = true;
                 }
                 
                 if (searchValue) {
                     links.forEach(link => {
                         if (link.textContent.toLowerCase().includes(searchValue)) {
-                            link.style.backgroundColor = '#fff3cd';
-                            link.style.borderRadius = '3px';
                             matches = true;
                         }
                     });
@@ -186,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return matches;
             }
 
-            // Function to show parent folders
             function showParentFolders(element) {
                 let parent = element.closest('.subfolder');
                 while (parent) {
@@ -200,14 +204,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Reset all items visibility first
             allItems.forEach(item => {
                 item.style.display = '';
                 item.style.animation = '';
             });
 
             if (searchValue) {
-                // Process all items for search
                 allItems.forEach(item => {
                     const hasMatch = checkElementMatch(item);
                     const hasChildMatch = Array.from(item.querySelectorAll('.toc-item, .catalogue-section, .catalogue-link, .showroom-link'))
@@ -218,7 +220,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         foundItems++;
                         showParentFolders(item);
                         
-                        // Show all child elements if parent matches
                         if (hasMatch) {
                             item.querySelectorAll('.toc-item, .catalogue-section, .catalogue-link, .showroom-link')
                                 .forEach(child => child.style.display = '');
@@ -228,13 +229,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
 
-                // Animate only visible results
                 const visibleItems = document.querySelectorAll('.toc-item:not([style*="display: none"])');
                 visibleItems.forEach((item, index) => {
                     item.style.animation = `fadeSlideIn 0.3s ease forwards ${index * 0.05}s`;
                 });
             } else {
-                // Reset to initial state when no search
                 document.querySelectorAll('.folder-toggle').forEach(toggle => {
                     const parentItem = toggle.parentElement;
                     parentItem.classList.add('folder-collapsed');
@@ -242,13 +241,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (collapseIcon) collapseIcon.textContent = '+';
                 });
 
-                // Clear all animations
                 document.querySelectorAll('.toc-item').forEach(item => {
                     item.style.animation = '';
                 });
             }
 
-            // Complete loading bar
             loadingBar.style.width = '100%';
             setTimeout(() => {
                 loadingBar.style.opacity = '0';
@@ -282,4 +279,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+});
+
+// Disable right click
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+        (e.ctrlKey && e.key === 'U')) {
+        e.preventDefault();
+    }
 });
