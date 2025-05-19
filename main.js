@@ -314,29 +314,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Enhanced security measures
-    // Disable right-click
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('contextmenu', (e) => e.preventDefault());  // Disable right-click
 
-    // Disable keydown events
     document.addEventListener('keydown', (e) => {
         if (e.key === 'F12' || 
             e.key === 'F1' || e.key === 'F2' || e.key === 'F3' || e.key === 'F4' || e.key === 'F5' || e.key === 'F6' || e.key === 'F7' || e.key === 'F8' || e.key === 'F9' || e.key === 'F10' || e.key === 'F11' ||
             (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
             (e.ctrlKey && e.key === 'U') || 
-            (e.ctrlKey && e.key === 'S') ||  // Ctrl+S to save page
-            (e.key === 'Pause' || e.key === 'ScrollLock') // Some debug keys
+            (e.ctrlKey && e.key === 'S')
         ) {
             e.preventDefault();
         }
     });
 
-    // Disable copy, cut, paste, and drag events
     document.addEventListener('copy', (e) => e.preventDefault());
     document.addEventListener('cut', (e) => e.preventDefault());
     document.addEventListener('paste', (e) => e.preventDefault());
     document.addEventListener('dragstart', (e) => e.preventDefault());
 
-    // Override console completely
     try {
         window.console.log = function() { return false; };
         window.console.debug = function() { return false; };
@@ -344,12 +339,4 @@ document.addEventListener('DOMContentLoaded', function() {
         window.console.warn = function() { return false; };
         window.console.error = function() { return false; };
     } catch (e) {}
-
-    // Attempt to detect devtools (basic and unreliable)
-    setInterval(function() {
-        const devtoolsOpen = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
-        if (devtoolsOpen) {
-            alert('Truy cập bị chặn!');  // Or redirect: window.location.href = 'about:blank';
-        }
-    }, 1000);  // Kiểm tra mỗi giây
 });
