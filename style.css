@@ -39,7 +39,7 @@ body[data-theme="light"] {
     --text-muted: #64748b;
     --highlight-color: #b89778;
     --highlight-border: rgba(184, 151, 120, 0.5);
-    --hover-text-color: #f5e050; /* Soft gold, used in dark mode only */
+    --hover-text-color: #f5e050; /* Soft gold, unused in this context */
     background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
 }
 
@@ -269,52 +269,18 @@ body[data-theme="dark"] .nav-link.active {
 }
 
 .toc-item:hover {
-    background: var(--primary-light);
-    transform: translateX(2px);
+    background: transparent; /* Remove hover effect */
 }
 
 .toc-link {
     display: flex;
-    padding: 12px 16px 12px 4px; /* Reduced left padding */
+    padding: 12px 16px 12px 2px; /* Reduced left padding to 2px */
     text-decoration: none;
     color: var(--text-color);
     transition: var(--transition-fast);
     align-items: center;
-    border-radius: 14px;
+    border-radius: 0; /* Remove rounding */
     box-sizing: border-box;
-}
-
-.toc-link:hover, .toc-link:focus {
-    background: var(--primary-light); /* Blue background */
-    color: var(--text-color); /* Black in light mode */
-    border-radius: 14px; /* Sync with container */
-    margin: 1px; /* Prevent border outline */
-    box-sizing: content-box;
-    outline: none;
-}
-
-.toc-link.folder-toggle:hover {
-    background: var(--glass-bg); /* Keep folder toggle distinct */
-    margin: 0; /* Reset for folder toggle */
-}
-
-.toc-link.active {
-    background: rgba(30, 64, 175, 0.3); /* Stronger blue in light mode */
-    color: var(--text-color); /* Black in light mode */
-    border-radius: 14px; /* Sync with container */
-    margin: 1px; /* Prevent border outline */
-    box-sizing: content-box;
-    font-weight: 600;
-}
-
-body[data-theme="dark"] .toc-link:hover,
-body[data-theme="dark"] .toc-link:focus {
-    color: var(--hover-text-color); /* Soft gold in dark mode */
-}
-
-body[data-theme="dark"] .toc-link.active {
-    background: rgba(59, 130, 246, 0.3); /* Stronger blue in dark mode */
-    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 .toc-icon {
@@ -324,26 +290,6 @@ body[data-theme="dark"] .toc-link.active {
     width: 24px;
     text-align: center;
     transition: var(--transition-fast);
-}
-
-@keyframes iconPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-.toc-link:hover .toc-icon, .toc-link:focus .toc-icon {
-    animation: iconPulse 0.3s ease;
-    color: var(--secondary-color);
-}
-
-.toc-link:hover .toc-title, .toc-link:focus .toc-title {
-    color: var(--text-color); /* Black in light mode */
-}
-
-body[data-theme="dark"] .toc-link:hover .toc-title,
-body[data-theme="dark"] .toc-link:focus .toc-title {
-    color: var(--hover-text-color); /* Soft gold in dark mode */
 }
 
 .toc-content {
@@ -634,7 +580,7 @@ body[data-theme="dark"] .back-to-top:focus {
         padding: 16px;
     }
     .toc-link {
-        padding: 10px 12px 10px 4px; /* Maintain reduced left padding */
+        padding: 10px 12px 10px 2px; /* Maintain reduced left padding */
     }
     .department-list {
         margin-left: 16px;
