@@ -5,40 +5,42 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
 :root {
-    --primary-color: #60a5fa; /* Lighter blue for better contrast */
-    --primary-dark: #2563eb;
-    --primary-light: rgba(96, 165, 250, 0.2);
+    --primary-color: #3b82f6; /* Sapphire blue, elegant and modern */
+    --primary-dark: #1e40af;
+    --primary-light: rgba(59, 130, 246, 0.2); /* Subtle blue for backgrounds */
     --glass-bg: rgba(255, 255, 255, 0.1); /* Glassmorphism background */
     --glass-border: rgba(255, 255, 255, 0.2);
-    --secondary-color: #fef08a; /* Softer yellow for hover */
+    --secondary-color: #f5e050; /* Soft gold, luxurious hover accent */
     --text-color: #f1f5f9; /* Light text for dark mode */
     --text-muted: #cbd5e1;
     --border-color: rgba(255, 255, 255, 0.15);
     --success-color: #22c55e;
     --success-light: rgba(34, 197, 94, 0.15);
     --danger-color: #ef4444;
-    --highlight-color: #fef08a;
-    --highlight-border: rgba(254, 240, 138, 0.5);
+    --highlight-color: #f5e050; /* Match secondary for consistency */
+    --highlight-border: rgba(245, 224, 80, 0.5);
+    --hover-text-color: #f5e050; /* Soft gold for hover/active (dark mode) */
     --transition-normal: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     --transition-fast: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
-    --shadow-lg: 0 6px 24px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 /* Light mode */
 body[data-theme="light"] {
-    --primary-color: #3b82f6; /* Slightly darker blue for light mode */
-    --primary-dark: #1e40af;
-    --primary-light: rgba(59, 130, 246, 0.2);
+    --primary-color: #1e40af; /* Darker sapphire blue for contrast */
+    --primary-dark: #1e3a8a;
+    --primary-light: rgba(30, 64, 175, 0.2);
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(0, 0, 0, 0.1);
-    --secondary-color: #fef08a; /* Same yellow for consistency */
+    --secondary-color: #b89778; /* Warm bronze, elegant and wood-inspired */
     --text-color: #1e293b;
     --text-muted: #64748b;
-    --highlight-color: #fef08a;
-    --highlight-border: rgba(254, 240, 138, 0.5);
-    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+    --highlight-color: #b89778;
+    --highlight-border: rgba(184, 151, 120, 0.5);
+    --hover-text-color: #e8d3b9; /* Ivory bronze, brighter for hover/active (light mode) */
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
 }
 
 /* Smooth scroll */
@@ -77,9 +79,9 @@ body {
 
 .header {
     text-align: center;
-    padding: 20px;
+    padding: 24px;
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     box-shadow: var(--shadow-md);
@@ -91,7 +93,7 @@ body {
 
 .header h1 {
     color: var(--primary-color);
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: 800;
     letter-spacing: -0.02em;
 }
@@ -102,16 +104,59 @@ body {
     font-size: 1rem;
 }
 
+.nav {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    padding: 16px;
+    box-shadow: var(--shadow-md);
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link:focus {
+    background: var(--primary-light);
+    color: var(--hover-text-color);
+    transform: scale(1.05);
+    outline: none;
+}
+
+.nav-link.active {
+    background: var(--primary-light);
+    color: var(--hover-text-color);
+    font-weight: 600;
+    box-shadow: inset 0 0 8px var(--primary-light);
+}
+
 .theme-toggle {
     position: fixed;
     bottom: 24px;
     right: 24px;
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,7 +215,7 @@ body {
 
 .toc {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     margin-bottom: 32px;
@@ -190,6 +235,7 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     border-radius: 16px 16px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .toc-list {
@@ -224,6 +270,7 @@ body {
 
 .toc-link:hover, .toc-link:focus {
     background: var(--primary-light);
+    color: var(--hover-text-color);
     transform: scale(1.02);
     box-shadow: var(--shadow-sm);
     outline: none;
@@ -236,7 +283,9 @@ body {
 .toc-link.active {
     background: var(--primary-light);
     border-left: 4px solid var(--primary-color);
+    color: var(--hover-text-color);
     font-weight: 600;
+    box-shadow: inset 0 0 8px var(--primary-light);
 }
 
 .toc-icon {
@@ -260,7 +309,7 @@ body {
 }
 
 .toc-link:hover .toc-title, .toc-link:focus .toc-title {
-    color: var(--primary-color);
+    color: var(--hover-text-color);
 }
 
 .toc-content {
@@ -333,7 +382,7 @@ body {
     margin-bottom: 24px;
     position: relative;
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 4px;
@@ -361,6 +410,7 @@ body {
     outline: none;
     box-shadow: 0 0 0 3px var(--primary-light);
     background: var(--glass-bg);
+    color: var(--hover-text-color);
 }
 
 .search-box .search-icon {
@@ -374,7 +424,7 @@ body {
 }
 
 .search-box input:focus + .search-icon {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -414,7 +464,7 @@ body {
 
 .department-badge {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     color: var(--primary-color);
     padding: 6px 12px;
     border-radius: 20px;
@@ -426,6 +476,7 @@ body {
 
 .department-badge:hover, .department-badge:focus {
     background: var(--primary-light);
+    color: var(--hover-text-color);
     transform: scale(1.05);
     box-shadow: var(--shadow-md);
     outline: none;
@@ -484,7 +535,7 @@ body[data-theme="light"] [data-tooltip]::after {
     font-size: 0.875rem;
     color: var(--text-muted);
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border-radius: 16px;
     border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-md);
@@ -495,11 +546,11 @@ body[data-theme="light"] [data-tooltip]::after {
     bottom: 24px;
     left: 24px;
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -518,6 +569,7 @@ body[data-theme="light"] [data-tooltip]::after {
 
 .back-to-top:hover, .back-to-top:focus {
     background: var(--primary-light);
+    color: var(--hover-text-color);
     transform: scale(1.1);
     box-shadow: var(--shadow-md);
     outline: none;
@@ -554,11 +606,15 @@ body[data-theme="light"] [data-tooltip]::after {
     .header h1 {
         font-size: 1.75rem;
     }
+    .nav-list {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
 
 /* Fallback for browsers without backdrop-filter */
-@supports not (backdrop-filter: blur(10px)) {
-    .header, .toc, .search-box, .theme-toggle, .back-to-top, .department-badge, .footer {
+@supports not (backdrop-filter: blur(12px)) {
+    .header, .nav, .toc, .search-box, .theme-toggle, .back-to-top, .department-badge, .footer {
         background: var(--glass-bg);
         border: 1px solid var(--glass-border);
     }
