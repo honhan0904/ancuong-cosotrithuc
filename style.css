@@ -96,20 +96,22 @@ body {
 }
 
 .theme-toggle {
-    position: absolute;
-    top: 24px;
-    right: 24px;
+    position: fixed;
+    bottom: 32px;
+    right: 32px; /* Replaced back-to-top position */
     background: var(--acrylic-bg);
     backdrop-filter: var(--acrylic-blur);
     border: 1px solid var(--border-light);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: var(--transition-fast);
+    box-shadow: var(--shadow-md);
+    z-index: 100;
 }
 
 .theme-toggle:hover {
@@ -422,39 +424,6 @@ body {
     box-shadow: 0 0 12px var(--primary-color);
 }
 
-.back-to-top {
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    width: 48px;
-    height: 48px;
-    background: var(--acrylic-bg);
-    backdrop-filter: var(--acrylic-blur);
-    color: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition-normal);
-    box-shadow: var(--shadow-md);
-    z-index: 100;
-}
-
-.back-to-top:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
-    box-shadow: 0 0 12px var(--primary-color);
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
 .ripple {
     position: absolute;
     border-radius: 50%;
@@ -531,16 +500,10 @@ body[data-theme="light"] [data-tooltip]::after {
     .level-3 { padding-left: 48px; }
     .level-4 { padding-left: 64px; }
     .level-5 { padding-left: 80px; }
-    .back-to-top {
+    .theme-toggle {
         bottom: 24px;
         right: 24px;
         width: 40px;
         height: 40px;
-    }
-    .theme-toggle {
-        top: 16px;
-        right: 16px;
-        width: 36px;
-        height: 36px;
     }
 }
