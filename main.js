@@ -70,16 +70,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 collapseIcon.textContent = '-';
                 collapseIcon.style.transform = 'rotate(180deg)';
                 
-                if (subfolder && !isSearching) {
+                if (subfolder) {
                     subfolder.style.display = 'block';
                     subfolder.style.animation = 'expandIn 0.4s ease forwards';
+                    if (isSearching) {
+                        subfolder.querySelectorAll('.toc-item').forEach(item => {
+                            item.style.display = '';  // Show all items
+                        });
+                    }
                 }
             } else {
                 parentItem.classList.add('folder-collapsed');
                 collapseIcon.textContent = '+';
                 collapseIcon.style.transform = 'rotate(0deg)';
                 
-                if (subfolder && !isSearching) {
+                if (subfolder) {
                     subfolder.style.animation = 'collapseOut 0.4s ease forwards';
                     setTimeout(() => {
                         if (parentItem.classList.contains('folder-collapsed')) {
@@ -92,6 +97,34 @@ document.addEventListener('DOMContentLoaded', function() {
             this.querySelector('.toc-icon').style.animation = 'iconPulse 0.5s ease';
         });
     });
+    
+    // Handle View All button
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('view-all-btn')) {
+            e.preventDefault();
+            const parentItem = e.target.closest('.toc-item');  // Get the parent item
+            expandAllSubfolders(parentItem);  // Call recursive function
+        }
+    });
+    
+    function expandAllSubfolders(item) {
+        const subfolder = item.querySelector('.subfolder');
+        if (subfolder) {
+            subfolder.style.display = 'block';
+            subfolder.style.animation = 'expandIn 0.4s ease forwards';
+            // Find all sub-items and expand them recursively
+            const subItems = subfolder.querySelectorAll('.toc-item.folder-collapsed');
+            subItems.forEach(subItem => {
+                subItem.classList.remove('folder-collapsed');
+                const subCollapseIcon = subItem.querySelector('.collapse-icon');
+                if (subCollapseIcon) {
+                    subCollapseIcon.textContent = '-';
+                    subCollapseIcon.style.transform = 'rotate(180deg)';
+                }
+                expandAllSubfolders(subItem);  // Recursive call
+            });
+        }
+    }
     
     // Ripple effect
     document.addEventListener('click', function(e) {
@@ -279,17 +312,44 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-});
 
-// Disable right click
-document.addEventListener('contextmenu', (e) => e.preventDefault());
+    // Enhanced security measures
+    // Disable right-click
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-// Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'F12' || 
-        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
-        (e.ctrlKey && e.key === 'U')) {
-        e.preventDefault();
-    }
+    // Disable keydown events
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'F12' || 
+            e.key === 'F1' || e.key === 'F2' || e.key === 'F3' || e.key === 'F4' || e.key === 'F5' || e.key === 'F6' || e.key === 'F7' || e.key === 'F8' || e.key === 'F9' || e.key === 'F10' || e.key === 'F11' ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+            (e.ctrlKey && e.key === 'U') || 
+            (e.ctrlKey && e.key === 'S') ||  // Ctrl+S to save page
+            (e.key === 'Pause' || e.key === 'ScrollLock') // Some debug keys
+        ) {
+            e.preventDefault();
+        }
+    });
+
+    // Disable copy, cut, paste, and drag events
+    document.addEventListener('copy', (e) => e.preventDefault());
+    document.addEventListener('cut', (e) => e.preventDefault());
+    document.addEventListener('paste', (e) => e.preventDefault());
+    document.addEventListener('dragstart', (e) => e.preventDefault());
+
+    // Override console completely
+    try {
+        window.console.log = function() { return false; };
+        window.console.debug = function() { return false; };
+        window.console.info = function() { return false; };
+        window.console.warn = function() { return false; };
+        window.console.error = function() { return false; };
+    } catch (e) {}
+
+    // Attempt to detect devtools (basic and unreliable)
+    setInterval(function() {
+        const devtoolsOpen = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
+        if (devtoolsOpen) {
+            alert('Truy cập bị chặn!');  // Or redirect: window.location.href = 'about:blank';
+        }
+    }, 1000);  // Kiểm tra mỗi giây
 });
