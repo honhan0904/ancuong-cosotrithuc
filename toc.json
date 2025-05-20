@@ -664,49 +664,49 @@
         "title": "TÀI LIỆU RIÊNG CHO TỪNG PHÒNG BAN (NẾU CÓ)",
         "icon": "📚",
         "href": "tai-lieu-dao-tao.html#tai-lieu-phong-ban",
-        "isFolder": false,
+        "isFolder": true,
         "children": []
       },
       {
         "title": "TÀI LIỆU CHUNG - CÁC THÔNG TIN CHUNG KHÔNG LIÊN QUAN NHAU",
         "icon": "📘",
         "href": "tai-lieu-dao-tao.html#tai-lieu-chung",
-        "isFolder": false,
+        "isFolder": true,
         "children": []
       },
       {
         "title": "CSKH & TƯ VẤN VẬT LIỆU",
         "icon": "👥",
         "href": "tai-lieu-dao-tao.html#cskh-tu-van",
-        "isFolder": false,
+        "isFolder": true,
         "children": []
       },
       {
         "title": "SHOWROOM - TÀI LIỆU CHO NV MỚI SHOWROOM",
         "icon": "🏪",
         "href": "tai-lieu-dao-tao.html#showroom-nhan-vien-moi",
-        "isFolder": false,
+        "isFolder": true,
         "children": []
       },
       {
         "title": "GÓC VẬT LIỆU",
         "icon": "🧩",
         "href": "tai-lieu-dao-tao.html#goc-vat-lieu",
-        "isFolder": false,
+        "isFolder": true,
         "children": []
       },
       {
         "title": "CNTT (SAP, HRIS, CRM,...)",
         "icon": "💻",
         "href": "tai-lieu-dao-tao.html#cntt",
-        "isFolder": false,
+        "isFolder": true,
         "children": []
       },
       {
         "title": "TÀI LIỆU VỀ LẬP HỢP ĐỒNG",
         "icon": "📝",
         "href": "tai-lieu-dao-tao.html#lap-hop-dong",
-        "isFolder": false,
+        "isFolder": true,
         "children": []
       }
     ]
@@ -1450,6 +1450,15 @@
     "icon": "💻",
     "href": "",
     "isFolder": true,
-    "children": []
+    "children": [
+      {
+        "title": "Test",
+        "icon": "fa-solid fa-laptop-binary",
+        "href": "test",
+        "description": "tes",
+        "isFolder": true,
+        "children": []
+      }
+    ]
   }
 ]
