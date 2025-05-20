@@ -1453,7 +1453,7 @@
     "children": [
       {
         "title": "Test",
-        "icon": "fa-solid fa-laptop-binary",
+        "icon": "💻",
         "href": "test",
         "description": "tes",
         "isFolder": true,

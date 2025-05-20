@@ -115,7 +115,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    list-style: none;
+    list-style: none;  /* Đảm bảo không có bullet */
     padding: 0;
     margin: 0;
 }
@@ -253,13 +253,13 @@ body[data-theme="dark"] .nav-link.active {
 .toc-list {
     padding: 0;
     margin: 0;
-    list-style: none;
+    list-style: none;  /* Đảm bảo không có bullet */
 }
 
 .toc-item {
     border-bottom: 1px solid var(--border-color);
     transition: var(--transition-fast);
-    animation: fadeSlideIn 0.3s ease forwards; /* Áp dụng animation cho tất cả */
+    list-style: none;  /* Thêm để loại bỏ bullet nếu cần */
 }
 
 .toc-item:last-child {
@@ -276,7 +276,6 @@ body[data-theme="dark"] .nav-link.active {
     border-radius: 0; /* Remove rounding */
     box-sizing: border-box;
     opacity: 0.9; /* Subtle fade for animation */
-    animation: fadeSlideIn 0.3s ease forwards; /* Áp dụng animation cho tất cả */
 }
 
 .toc-link:hover {
@@ -347,7 +346,7 @@ body[data-theme="dark"] .nav-link.active {
     max-height: 0;
     opacity: 0;
     transition: max-height 0.3s ease, opacity 0.3s ease;
-    animation: fadeSlideIn 0.3s ease forwards; /* Thêm animation cho subfolder */
+    list-style: none;  /* Thêm để loại bỏ bullet cho subfolder */
 }
 
 :not(.folder-collapsed) > .subfolder {
@@ -377,8 +376,8 @@ body[data-theme="dark"] .nav-link.active {
 .level-3 { padding-left: 60px; }
 .level-4 { padding-left: 80px; }
 .level-5 { padding-left: 100px; }
-.level-6 { padding-left: 120px; } /* Thêm mới */
-.level-7 { padding-left: 140px; } /* Thêm mới */
+.level-6 { padding-left: 120px; }  /* Thêm mới */
+.level-7 { padding-left: 140px; }  /* Thêm mới */
 
 .search-box {
     margin-bottom: 24px;
@@ -611,8 +610,8 @@ body[data-theme="dark"] .back-to-top:focus {
     .level-3 { padding-left: 44px; }
     .level-4 { padding-left: 60px; }
     .level-5 { padding-left: 76px; }
-    .level-6 { padding-left: 92px; } /* Thêm mới cho responsive */
-    .level-7 { padding-left: 108px; } /* Thêm mới cho responsive */
+    .level-6 { padding-left: 92px; }
+    .level-7 { padding-left: 108px; }
     .theme-toggle, .back-to-top {
         bottom: 16px;
         width: 40px;
