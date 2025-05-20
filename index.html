@@ -40,43 +40,32 @@
         </script><!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CƠ SỞ TRI THỨC AN CƯỜNG</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CƠ SỞ TRI THỨC AN CƯỜNG</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>CƠ SỞ TRI THỨC AN CƯỜNG</h1>
-            <p>An Cường - Cập nhật: 16/05/2025</p>
-        </header>
-
-        <div class="search-box">
-            <input type="text" placeholder="Tìm kiếm..." aria-label="Tìm kiếm">
-            <i class="fas fa-search search-icon"></i>
-        </div>
-
-        <nav class="nav">
-            <ul class="nav-list">
-                <!-- Navigation items can be added here -->
-            </ul>
-        </nav>
-
-        <div class="toc">
-            <div class="toc-header">TÀI LIỆU NỘI BỘ</div>
-            <ul class="toc-list">
-                <!-- TOC items can be added here -->
-            </ul>
-        </div>
-
-        <div class="no-results">
-            Không tìm thấy kết quả
-        </div>
-
-        <footer class="footer">
-            © 2025 An Cường - Tài liệu nội bộ. Cập nhật lần cuối: 16/05/2025
-        </footer>
+  <div class="loading-bar" id="loading-bar"></div>
+  <div class="container">
+    <header class="header">
+      <h1>CƠ SỞ TRI THỨC AN CƯỜNG</h1>
+      <p>An Cường - Cập nhật: 16/05/2025</p>
+    </header>
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Tìm kiếm tài liệu..." aria-label="Tìm kiếm tài liệu">
+      <span class="search-icon">🔍</span>
     </div>
+    <div id="no-results" class="no-results" style="display: none;">Không tìm thấy kết quả</div>
+    <section class="toc">
+      <h2 class="toc-header">TÀI LIỆU NỘI BỘ</h2>
+      <ul class="toc-list"></ul>
+    </section>
+    <footer class="footer">
+      <p>© 2025 An Cường - Tài liệu nội bộ. Cập nhật lần cuối: 16/05/2025</p>
+    </footer>
+  </div>
+  <div id="back-to-top" class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 </body>
 </html>
