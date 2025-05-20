@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderTocItems(items, level) {
     return items.map(item => `
       <li class="toc-item${item.isFolder ? ' folder-collapsed' : ''} level-${level}">
-        <a href="${item.href || '#'}" class="toc-link${item.isFolder ? ' folder-toggle' : ''}" ${item.isFolder ? 'aria-expanded="false"' : ''}>
+        <a href="${item.href || '#'}" class="toc-link${item.isFolder ? ' folder-toggle' : ''} level-${level}" ${item.isFolder ? 'aria-expanded="false"' : ''}>
           <span class="toc-icon">${item.icon}</span>
           <div class="toc-content">
             <span class="toc-title">${item.title}</span>
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${item.isFolder ? '<span class="collapse-icon">+</span>' : ''}
         </a>
         ${item.children.length > 0 ? `
-          <ul class="subfolder">
+          <ul class="subfolder level-${level + 1}">
             ${renderTocItems(item.children, level + 1)}
           </ul>
         ` : ''}
