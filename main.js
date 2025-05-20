@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       // Security: Basic token check (placeholder; requires server-side validation)
       const token = localStorage.getItem('authToken') || 'placeholder-token';
-      const response = await fetch('./toc.json', {
+      const response = await fetch('https://ancuong.com/an-cuong/toc.json', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Unauthorized access to TOC');
