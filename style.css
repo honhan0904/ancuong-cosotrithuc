@@ -606,12 +606,13 @@ body[data-theme="dark"] .back-to-top:focus {
     .department-list {
         margin-left: 16px;
     }
-    .level-2 { padding-left: 22px; }  /* Tăng 5px từ .level-1 trong responsive */
-    .level-3 { padding-left: 27px; }  /* Tăng 5px từ .level-2 */
-    .level-4 { padding-left: 32px; }  /* Tăng 5px từ .level-3 */
-    .level-5 { padding-left: 37px; }  /* Tăng 5px từ .level-4 */
-    .level-6 { padding-left: 42px; }  /* Tăng 5px từ .level-5 */
-    .level-7 { padding-left: 47px; }  /* Tăng 5px từ .level-6 */
+    .level-1 { padding-left: 10px; }  /* Giảm mạnh để phù hợp với di động */
+    .level-2 { padding-left: 12px; }  /* Tăng 2px từ .level-1 */
+    .level-3 { padding-left: 14px; }  /* Tăng 2px từ .level-2 */
+    .level-4 { padding-left: 16px; }  /* Tăng 2px từ .level-3 */
+    .level-5 { padding-left: 18px; }  /* Tăng 2px từ .level-4 */
+    .level-6 { padding-left: 20px; }  /* Tăng 2px từ .level-5 */
+    .level-7 { padding-left: 22px; }  /* Tăng 2px từ .level-6 */
     .theme-toggle, .back-to-top {
         bottom: 16px;
         width: 40px;
