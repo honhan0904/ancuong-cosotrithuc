@@ -520,41 +520,41 @@
       {
         "title": "NHÀ MÁY VÁN CÔNG NGHIỆP",
         "icon": "🏭",
-        "href": "quy-trinh-phong-ban.html#nha-may-van-cong-nghiep",
+        "href": "",
         "isFolder": true,
         "children": [
           {
             "title": "QUY TRÌNH",
             "icon": "📋",
-            "href": "quy-trinh-phong-ban.html#nha-may-van-cong-nghiep-quy-trinh",
+            "href": "https://drive.google.com/drive/folders/1ydTzEHZ-NrKMhx8Qx5SWAuXqlkxc-tDw?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "HƯỚNG DẪN",
             "icon": "📖",
-            "href": "quy-trinh-phong-ban.html#nha-may-van-cong-nghiep-huong-dan",
+            "href": "https://drive.google.com/drive/folders/1JfsKVpDRcfwif_yD1Qc9MLP_z-9o3JoZ?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "BIỂU MẪU",
             "icon": "📝",
-            "href": "quy-trinh-phong-ban.html#nha-may-van-cong-nghiep-bieu-mau",
+            "href": "https://drive.google.com/drive/folders/11p8BPIqnGxeqPLlU_OBvs5AT95A-GO89?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "QUY ĐỊNH",
             "icon": "📏",
-            "href": "quy-trinh-phong-ban.html#nha-may-van-cong-nghiep-quy-dinh",
+            "href": "https://drive.google.com/drive/folders/1Wg6BvrXaDXuSSCP9Wv63wq259diUeGlF?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "TIÊU CHUẨN",
             "icon": "📐",
-            "href": "quy-trinh-phong-ban.html#nha-may-van-cong-nghiep-tieu-chuan",
+            "href": "https://drive.google.com/drive/folders/1Hzj7GiFNDuv4magba_WOCeRLOnKqUEZt?usp=sharing",
             "isFolder": false,
             "children": []
           }
@@ -563,34 +563,34 @@
       {
         "title": "NHÂN SỰ",
         "icon": "👥",
-        "href": "quy-trinh-phong-ban.html#nhan-su",
+        "href": "",
         "isFolder": true,
         "children": [
           {
             "title": "QUY TRÌNH",
             "icon": "📋",
-            "href": "quy-trinh-phong-ban.html#nhan-su-quy-trinh",
+            "href": "https://drive.google.com/drive/folders/1Hz0GZta2eb6BE6VveY_P175-b3WgHs1v?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "HƯỚNG DẪN",
             "icon": "📖",
-            "href": "quy-trinh-phong-ban.html#nhan-su-huong-dan",
+            "href": "https://drive.google.com/drive/folders/15KiSr1svONdj2bUpIilTwlbMUSKipWm6?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "BIỂU MẪU",
             "icon": "📝",
-            "href": "quy-trinh-phong-ban.html#nhan-su-bieu-mau",
+            "href": "https://drive.google.com/drive/folders/1E3CQErFXKdO_FZSuMJZTGhgz8e2UHqdl?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "QUY ĐỊNH",
             "icon": "📏",
-            "href": "quy-trinh-phong-ban.html#nhan-su-quy-dinh",
+            "href": "https://drive.google.com/drive/folders/1VTZAt4otcmXDwJDgi6rbQYKbzMR9NDP-?usp=sharing",
             "isFolder": false,
             "children": []
           }
@@ -599,34 +599,34 @@
       {
         "title": "PHÁP CHẾ",
         "icon": "⚖️",
-        "href": "quy-trinh-phong-ban.html#phap-che",
+        "href": "",
         "isFolder": true,
         "children": [
           {
             "title": "QUY TRÌNH",
             "icon": "📋",
-            "href": "quy-trinh-phong-ban.html#phap-che-quy-trinh",
+            "href": "https://drive.google.com/drive/folders/1Hz0GZta2eb6BE6VveY_P175-b3WgHs1v?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "HƯỚNG DẪN",
             "icon": "📖",
-            "href": "quy-trinh-phong-ban.html#phap-che-huong-dan",
+            "href": "https://drive.google.com/drive/folders/15KiSr1svONdj2bUpIilTwlbMUSKipWm6?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "BIỂU MẪU",
             "icon": "📝",
-            "href": "quy-trinh-phong-ban.html#phap-che-bieu-mau",
+            "href": "https://drive.google.com/drive/folders/1E3CQErFXKdO_FZSuMJZTGhgz8e2UHqdl?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "QUY ĐỊNH",
             "icon": "📏",
-            "href": "quy-trinh-phong-ban.html#phap-che-quy-dinh",
+            "href": "https://drive.google.com/drive/folders/1VTZAt4otcmXDwJDgi6rbQYKbzMR9NDP-?usp=sharing",
             "isFolder": false,
             "children": []
           }
@@ -635,41 +635,41 @@
       {
         "title": "TRUNG TÂM DỊCH VỤ KHÁCH HÀNG",
         "icon": "🛎️",
-        "href": "quy-trinh-phong-ban.html#trung-tam-dich-vu-khach-hang",
+        "href": "",
         "isFolder": true,
         "children": [
           {
             "title": "QUY TRÌNH",
             "icon": "📋",
-            "href": "quy-trinh-phong-ban.html#trung-tam-dich-vu-khach-hang-quy-trinh",
+            "href": "https://drive.google.com/drive/folders/14UdZbm7QOZZfQ7KJnOoPHRdIFQb_DIY-?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "HƯỚNG DẪN",
             "icon": "📖",
-            "href": "quy-trinh-phong-ban.html#trung-tam-dich-vu-khach-hang-huong-dan",
+            "href": "https://drive.google.com/drive/folders/1mCcZmEiHWRnATbuRWRvufPPGZpJTrmOR?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "BIỂU MẪU",
             "icon": "📝",
-            "href": "quy-trinh-phong-ban.html#trung-tam-dich-vu-khach-hang-bieu-mau",
+            "href": "https://drive.google.com/drive/folders/16SHKNwVqAo6ztNsm3mE224l5tkGq0Ex1?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "QUY ĐỊNH",
             "icon": "📏",
-            "href": "quy-trinh-phong-ban.html#trung-tam-dich-vu-khach-hang-quy-dinh",
+            "href": "https://drive.google.com/drive/folders/19G55oMrE38UI8xb_xq0Pu3s7CUDBlaFw?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "QUY CHUẨN",
             "icon": "📊",
-            "href": "quy-trinh-phong-ban.html#trung-tam-dich-vu-khach-hang-quy-chuan",
+            "href": "https://drive.google.com/drive/folders/1HfwrVxtsqHU6dBMD2ejpJa_G64d4eInD?usp=sharing",
             "isFolder": false,
             "children": []
           }
