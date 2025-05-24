@@ -209,41 +209,49 @@
       {
         "title": "CHUỖI CUNG ỨNG",
         "icon": "🔄",
-        "href": "quy-trinh-phong-ban.html#chuoi-cung-ung",
+        "href": "",
         "isFolder": true,
         "children": [
           {
             "title": "QUY TRÌNH",
             "icon": "📋",
-            "href": "quy-trinh-phong-ban.html#chuoi-cung-ung-quy-trinh",
+            "href": "https://drive.google.com/drive/folders/1NCsqdvGQSXB6O7RdPunE4bIR2cmxCGnJ?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "HƯỚNG DẪN",
             "icon": "📖",
-            "href": "quy-trinh-phong-ban.html#chuoi-cung-ung-huong-dan",
+            "href": "https://drive.google.com/drive/folders/1zr6506hB1PxeQ-Bt4LRFWboim6wzu5k4?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "BIỂU MẪU",
             "icon": "📝",
-            "href": "quy-trinh-phong-ban.html#chuoi-cung-ung-bieu-mau",
+            "href": "https://drive.google.com/drive/folders/1GtlahBhOILF1BGZ-e5k3TX2QLnhU5zZO?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "QUY ĐỊNH",
             "icon": "📏",
-            "href": "quy-trinh-phong-ban.html#chuoi-cung-ung-quy-dinh",
+            "href": "https://drive.google.com/drive/folders/1XVzyXeUNqvqtRExhWtsNnPR6xCz0D9Og?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "ACADEMY",
             "icon": "🎓",
-            "href": "quy-trinh-phong-ban.html#chuoi-cung-ung-academy",
+            "href": "https://drive.google.com/drive/folders/1yqHxfNNL9TIr6ROg2k--M_QNaJ9voAAu?usp=sharing",
+            "isFolder": false,
+            "children": []
+          },
+          {
+            "title": "TÀI LIỆU KHÁC",
+            "icon": "📃",
+            "href": "https://drive.google.com/drive/folders/1CGt41iHcYK-QWaMmtdfsSe54IVqT-Ofy?usp=sharing",
+            "description": "",
             "isFolder": false,
             "children": []
           }
@@ -252,41 +260,49 @@
       {
         "title": "DỰ ÁN XUẤT KHẨU",
         "icon": "🌍",
-        "href": "quy-trinh-phong-ban.html#du-an-xuat-khau",
+        "href": "",
         "isFolder": true,
         "children": [
           {
             "title": "QUY TRÌNH",
             "icon": "📋",
-            "href": "quy-trinh-phong-ban.html#du-an-xuat-khau-quy-trinh",
+            "href": "https://drive.google.com/drive/folders/1D77lJZN3_pxqYaRHSGa8c9N4OvD62p2j?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "HƯỚNG DẪN",
             "icon": "📖",
-            "href": "quy-trinh-phong-ban.html#du-an-xuat-khau-huong-dan",
+            "href": "https://drive.google.com/drive/folders/1czPuu4c1fWAifKdpyeQeTO0AY2VgM4mu?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "BIỂU MẪU",
             "icon": "📝",
-            "href": "quy-trinh-phong-ban.html#du-an-xuat-khau-bieu-mau",
+            "href": "https://drive.google.com/drive/folders/1a7hqYMMSBE9RdobM8P3qj37oTlJmmT1u?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "QUY ĐỊNH",
             "icon": "📏",
-            "href": "quy-trinh-phong-ban.html#du-an-xuat-khau-quy-dinh",
+            "href": "https://drive.google.com/drive/folders/1ka6o4WZr7X49ZkH3MHuwgCW6EiECv5wV?usp=sharing",
             "isFolder": false,
             "children": []
           },
           {
             "title": "ACADEMY",
             "icon": "🎓",
-            "href": "quy-trinh-phong-ban.html#du-an-xuat-khau-academy",
+            "href": "https://drive.google.com/drive/folders/1KvbTWy08AlcitIhTWA2O6qzdFl5emxtF?usp=sharing",
+            "isFolder": false,
+            "children": []
+          },
+          {
+            "title": "TÀI LIỆU KHÁC",
+            "icon": "📃",
+            "href": "https://drive.google.com/drive/folders/1aO2Se41mQroW_dTB78J-tTHFmLYvziKE?usp=sharing",
+            "description": "",
             "isFolder": false,
             "children": []
           }
