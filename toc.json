@@ -17,7 +17,7 @@
       {
         "title": "GIẤY PHÉP KINH DOANH CÔNG TY",
         "icon": "📜",
-        "href": "thong-tin-cong-ty.html#giay-phep-kinh-doanh",
+        "href": "",
         "isFolder": true,
         "children": [
           {
@@ -105,33 +105,33 @@
       {
         "title": "THẨM QUYỀN VÀ ỦY QUYỀN PHÊ DUYỆT",
         "icon": "🔐",
-        "href": "thong-tin-cong-ty.html#tham-quyen",
+        "href": "",
         "isFolder": true,
         "children": [
           {
             "title": "2025",
             "icon": "📅",
-            "href": "thong-tin-cong-ty.html#tham-quyen-2025",
+            "href": "",
             "isFolder": true,
             "children": [
               {
                 "title": "THẨM QUYỀN",
                 "icon": "📃",
-                "href": "thong-tin-cong-ty.html#tham-quyen-chi-tiet",
+                "href": "https://drive.google.com/drive/folders/1JpoUPfFlvoEDbC929UZkwafkbcuYU9PC?usp=sharing",
                 "isFolder": false,
                 "children": []
               },
               {
                 "title": "CPG - GIẤY ỦY QUYỀN",
                 "icon": "📃",
-                "href": "thong-tin-cong-ty.html#uy-quyen-cpg",
+                "href": "https://drive.google.com/drive/folders/1dQjFdtjA9yL6dC_akH88FRNI5J9rCsLj?usp=sharing",
                 "isFolder": false,
                 "children": []
               },
               {
                 "title": "SXG - GIẤY ỦY QUYỀN",
                 "icon": "📃",
-                "href": "thong-tin-cong-ty.html#uy-quyen-sxg",
+                "href": "https://drive.google.com/drive/folders/1mTe2Cp-Uh0tAjQWe6DjkZXEZ3C4-k6UF?usp=sharing",
                 "isFolder": false,
                 "children": []
               }
@@ -145,14 +145,14 @@
     "title": "CHÍNH SÁCH & QUY ĐỊNH",
     "description": "Các quy định, chính sách và quy tắc áp dụng trong công ty",
     "icon": "📋",
-    "href": "chinh-sach-quy-dinh.html",
+    "href": "",
     "isFolder": true,
     "children": [
       {
         "title": "SỔ TAY NHÂN VIÊN",
         "description": "Hướng dẫn toàn diện dành cho nhân viên mới và hiện tại",
         "icon": "📒",
-        "href": "chinh-sach-quy-dinh.html#so-tay-nhan-vien",
+        "href": "https://drive.google.com/drive/folders/1Y1kLzi5T6VG3AfWQh-meGU2rVmmL-lo3?usp=sharing",
         "isFolder": false,
         "children": []
       },
@@ -160,7 +160,7 @@
         "title": "QUY ĐỊNH LAO ĐỘNG",
         "description": "Quy định về thời gian làm việc, nghỉ phép và các vấn đề liên quan",
         "icon": "📝",
-        "href": "chinh-sach-quy-dinh.html#quy-dinh-lao-dong",
+        "href": "https://drive.google.com/drive/folders/1YbDUKyvfTIJZiSFmWFdB8l-g5DiDfZrA?usp=sharing",
         "isFolder": false,
         "children": []
       },
@@ -168,7 +168,7 @@
         "title": "QUY ĐỊNH CẤP PHÁT THIẾT BỊ",
         "description": "Quy trình và chính sách cấp phát thiết bị cho nhân viên",
         "icon": "🖨️",
-        "href": "chinh-sach-quy-dinh.html#quy-dinh-thiet-bi",
+        "href": "https://drive.google.com/drive/folders/1zsrp9gz9dVLIE4-T4lSo1djyKVMFFK6v?usp=sharing",
         "isFolder": false,
         "children": []
       },
@@ -176,7 +176,7 @@
         "title": "CHÍNH SÁCH CHUNG",
         "description": "Các chính sách chung áp dụng toàn công ty",
         "icon": "📄",
-        "href": "chinh-sach-quy-dinh.html#chinh-sach-chung",
+        "href": "https://drive.google.com/drive/folders/1uKdr9AXpo7RXjsc4SOENmzN1sh9Ak940?usp=sharing",
         "isFolder": false,
         "children": []
       }
@@ -186,14 +186,14 @@
     "title": "TÀI NGUYÊN CHUNG",
     "description": "Tài nguyên dùng chung dành cho tất cả nhân viên",
     "icon": "📁",
-    "href": "tai-nguyen-chung.html",
+    "href": "",
     "isFolder": true,
     "children": [
       {
         "title": "THÔNG TIN THANH TOÁN",
         "description": "Thông tin tài khoản và hướng dẫn thanh toán",
         "icon": "💰",
-        "href": "tai-nguyen-chung.html#thong-tin-thanh-toan",
+        "href": "https://drive.google.com/drive/folders/1nJzMbT8K3j0vbIlzFcNr3JDjz0K0yUnA?usp=sharing",
         "isFolder": false,
         "children": []
       }
