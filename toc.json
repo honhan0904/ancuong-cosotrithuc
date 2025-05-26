@@ -1505,14 +1505,6 @@
     "isFolder": true,
     "children": [
       {
-        "title": "Test",
-        "icon": "💻",
-        "href": "test",
-        "description": "tes",
-        "isFolder": true,
-        "children": []
-      },
-      {
         "title": "01. HỆ THỐNG ỨNG DỤNG",
         "icon": "📱",
         "href": "",
