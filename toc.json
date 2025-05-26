@@ -722,9 +722,35 @@
       {
         "title": "CNTT (SAP, HRIS, CRM,...)",
         "icon": "💻",
-        "href": "tai-lieu-dao-tao.html#cntt",
+        "href": "",
         "isFolder": true,
-        "children": []
+        "children": [
+          {
+            "title": "01. SAP",
+            "icon": "👨🏻‍💻",
+            "href": "",
+            "description": "SAP S/4HANA",
+            "isFolder": true,
+            "children": []
+          },
+          {
+            "title": "02. HRIS",
+            "icon": "👥",
+            "href": "https://drive.google.com/drive/folders/1BZxB5Vl0PDsmsVcTH45jNpCH9QNGOZtQ?usp=sharing",
+            "description": "Ứng dụng nhân sự",
+            "isFolder": false,
+            "children": []
+          },
+          {
+            "title": "03. CRM",
+            "icon": "📑",
+            "href": "",
+            "description": "Phần mềm quản lí quan hệ khách hàng",
+            "isFolder": true,
+            "children": []
+          }
+        ],
+        "description": ""
       },
       {
         "title": "TÀI LIỆU VỀ LẬP HỢP ĐỒNG",
@@ -1483,6 +1509,22 @@
         "icon": "💻",
         "href": "test",
         "description": "tes",
+        "isFolder": true,
+        "children": []
+      },
+      {
+        "title": "01. HỆ THỐNG ỨNG DỤNG",
+        "icon": "📱",
+        "href": "",
+        "description": "Tổng hợp hê thống ứng dụng của An Cường",
+        "isFolder": false,
+        "children": []
+      },
+      {
+        "title": "02. PHÂN QUYỀN",
+        "icon": "🚫",
+        "href": "",
+        "description": "Quyền user trên từng ứng dụng",
         "isFolder": true,
         "children": []
       }
