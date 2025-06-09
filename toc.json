@@ -103,7 +103,7 @@
         "description": ""
       },
       {
-        "title": "THẨM QUYỀN VÀ ỦY QUYỀN PHÊ DUYỆT",
+        "title": "THẨM QUYỀN VÀ ỦY QUYỀN (UQ) PHÊ DUYỆT",
         "icon": "🔐",
         "href": "",
         "isFolder": true,
@@ -122,14 +122,14 @@
                 "children": []
               },
               {
-                "title": "CPG - GIẤY ỦY QUYỀN",
+                "title": "CPG - GIẤY ỦY QUYỀN (UQ)",
                 "icon": "📃",
                 "href": "https://drive.google.com/drive/folders/1dQjFdtjA9yL6dC_akH88FRNI5J9rCsLj?usp=sharing",
                 "isFolder": false,
                 "children": []
               },
               {
-                "title": "SXG - GIẤY ỦY QUYỀN",
+                "title": "SXG - GIẤY ỦY QUYỀN (UQ)",
                 "icon": "📃",
                 "href": "https://drive.google.com/drive/folders/1mTe2Cp-Uh0tAjQWe6DjkZXEZ3C4-k6UF?usp=sharing",
                 "isFolder": false,
